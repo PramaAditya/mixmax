@@ -1,0 +1,222 @@
+@import "_mixins"; 
+
+footer{
+    position: relative;
+    z-index: 10;
+    padding: 25em 0 0;
+    width: 100vw;
+    
+    overflow-x: hidden;
+    background-color: #E4E4E4;
+    .newsletter{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .header{
+        @extend .title;
+        text-align: center;
+        font-family: 'Cooper';
+        font-size: 80px;
+        @media screen and (max-width: $tablet) {
+            font-size: 40px;
+        }
+        
+    }
+    .newsletter-field{
+        $btn-width: 50px;
+        $btn-width-mobile: 20px;
+        position: relative;
+        text-align: center;
+        
+        #email-input{
+            border: 0px;
+            &::placeholder{
+                color: #6C6C6C !important;
+            }
+            font-weight: normal!important;
+            background: none;
+            text-align: center;
+            font-size: 2.5em;
+            width: 90%;
+            margin-right: 5px;
+            padding: .5em 0;
+            border-bottom: 2px solid #6C6C6C !important;
+            @media screen and (max-width: $tablet) {
+                font-size: 1.25em;
+                width: calc(100% - #{$btn-width-mobile});
+                // margin-left: -$btn-width-mobile;
+            }
+        }
+        
+        .enter-icon{
+            content: " ";
+            position: absolute;
+            background-image: url('../images/enter_icon.svg');
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border: 0;
+            background-color: rgba(0,0,0,0);
+            height: 100%;
+            margin: auto;
+            width: $btn-width;
+            @media screen and (max-width: $tablet) {
+                width: $btn-width-mobile;
+            }
+            top: 0;
+            right: 0;
+        }
+        
+    }
+    .label{
+        font-size: 15px;
+        text-align: center;
+        font-weight: 500;
+        margin-top: 1em;
+        @media screen and (max-width: $tablet) {
+            margin-top: .5em;
+        }
+    }
+    .menus{
+        position: relative;
+        text-align: center;
+        margin: auto;
+        margin-top: 5em;
+        margin-bottom: 2em;
+        width: 80%;
+        
+        @media screen and (min-width: $tablet) {
+            // margin-top: 15em;
+            width: 100%;
+            // margin-bottom: em;
+        }
+        .level{
+            .copyright{ 
+                justify-content: flex-start;
+                padding-left: 2em;
+                @media screen and (max-width:$tablet) {
+                    padding: 0;
+                    
+                }
+                p{
+                    text-align: left;
+                    font-size: .75em;
+                    @media screen and (max-width:$tablet) {
+                        // font-size: .5em;
+                        text-align: center;
+                    }
+                }
+                a{
+                    color: black;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .by{
+                flex-direction: column;
+                p{
+                    font-weight: bold;
+                }
+                img{
+                    margin-top: .5em;
+                    width: 90px;
+                }
+            }
+            .menu{
+                justify-content: flex-end;
+                @media screen and (max-width:$tablet) {
+                    justify-content: center;
+                    a{
+                        padding: 0 .5em !important;
+                    }
+                }
+                a{
+                    color: black;
+                    flex-grow: 0;
+                    padding-right: 2em;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                
+            }
+            
+            @media screen and (min-width: $tablet) {
+                margin-top: 5em;
+                .level-item{
+                    width: 33.33%;
+                }
+            }
+            @media screen and (max-width:$tablet) {
+                .level-item{
+                    margin-top: 2em;
+                }
+                
+            }
+        }
+    }
+    .bottle{
+        
+        $height: 620px;
+        $width: $height*0.3;
+        margin: auto;
+        margin-top: 17em;
+        top: 0;
+        bottom: 0;
+        width: $width;
+        height: $height;
+        &.left{
+            left: 0%;
+        }
+        &.right{
+            right: 0%;
+        }
+        @media screen and (min-width: 1100px){
+            &.left{
+                left: 5%;
+            }
+            &.right{
+                right: 5%;
+            }
+        }
+        @media screen and (max-width: 800px) {
+            @include shadow;
+            margin-top: 25em;
+            $height: 300px;
+            $width: $height*0.3;
+            width: $width;
+            height: $height;
+            &.left{
+                left: -$width/2;
+            }
+            &.right{
+                right: -$width/2;
+            }
+        }
+        
+    }
+
+    @media screen and (max-width: $tablet) {
+        padding-top: 240px;
+        .newsletter-field{
+            padding: 0 50px;
+            // font-size: 10px;
+            .enter-icon{
+                right: 15%;
+            }
+            #email-input{
+                color: black;
+                font-size: 24px!important;
+            }
+        }
+        .menus{
+            margin-top: 40px;
+            .button{
+                font-size: 16px;
+            }
+        }
+    }
+}

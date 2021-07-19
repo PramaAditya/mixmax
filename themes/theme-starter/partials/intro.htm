@@ -1,0 +1,51 @@
+<div class="intro intro1" id="intro1">
+    <div class="logos">
+        <img src="{{'assets/images/white-mixmax.png' | theme}}" alt="">
+        <img src="{{'assets/images/white-blackjack.png' | theme}}" alt="">
+    </div>
+    <div class="legal">
+        <div class="scroller">
+            <div class="scroller__container">
+                <div class="toScroll">
+                    {% for x in 1..2 %}
+                    Are you of legal drinking age in your country?&nbsp;
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <p>Above 21+</p>
+    </div>
+    <div class="buttons">
+        <a class="b-button is-white yes">
+            YES
+        </a>
+        <a href="https://www.google.com/search?q=sirup+marjan" class="b-button is-black">
+            NO
+        </a>
+    </div>
+</div>
+{% partial 'site-choose' %}
+
+{% put scripts %}
+<script>
+    $('#intro1 .b-button.yes').click(function () {
+        $('#intro1').addClass('hidden');
+        Cookies.set('intro1', 'done');
+    });
+    $('#intro2 .mixmax').click(function () {
+        $('#intro2').addClass('hidden');
+        Cookies.set('intro2', 'done');
+    });
+
+    if (Cookies.get('intro1') == 'done'){
+        $('#intro1').addClass('hidden');
+    }
+
+    if (Cookies.get('intro2') == 'done'){
+        $('#intro2').addClass('hidden');
+    }
+
+    
+
+</script>
+{% endput %}

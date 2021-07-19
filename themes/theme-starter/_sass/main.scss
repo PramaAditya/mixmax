@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+// Update the sans-serif font family
+$family-sans-serif: "HelveticaNeueCyr",
+"Arial",
+sans-serif;
+
+
+
+$title-family: 'Cooper';
+$title-color : black;
+$text        : black;
+
+// Custom Variables
+$divider-h: 300px;
+$hijau    : #3DB58B;
+$merah    : #DA3611;
+$kuning   : #FEB00F;
+
+$shadow-opacity: .1;
+
+@import "../node_modules/bulma/bulma";
+
+@import "navbar";
+@import "mega_menu";
+@import "footer";
+@import "fonts";
+@import "_mixins";
+@import "index";
+@import "layout";
+@import "scroll_text";
+@import "animations";
+@import "floaters";
+@import "flavors";
+@import "preloader";
+@import "intro";
+@import "recipes";
+@import "contact";
+@import "buy";
+@import "location";
+@import "bubbles";
+@import "article";
+@import "stores";
+// @import "bieren";
+
+// html {
+//     * {
+//         cursor: url('../images/up-sign.png'), auto !important;
+//     }
+
+//     a {
+//         cursor: url('../images/click.png'), auto !important;
+//     }
+// }
+
+
+.has-shadow {
+    @include shadow;
+}
+
+button.btn,.button {
+    background-color: transparent;
+    background-image: url(../images/btn_bg.svg);
+    background-size : 100% 100%;
+    border          : 0;
+    padding         : 45px 50px 65px 40px;
+    color           : white;
+    font-family     : 'Cooper';
+
+    transition: ease-in-out .2s all;
+
+    &:hover,
+    &:focus {
+        color: white;
+    }
+
+    @media screen and (min-width: $tablet) {
+        &:hover {
+            transform: scale(1.2) rotate(-5deg);
+        }
+    }
+
+    &__icon {
+        display    : inline-block;
+        height     : 1em;
+        margin-left: .5em;
+    }
+
+    &.is-large {
+
+        @media screen and (min-width: $tablet) {
+            transform: scale(1.5);
+
+            &:hover {
+                transform: scale(1.7) rotate(-5deg);
+            }
+        }
+    }
+
+    &.is-large {
+
+        @media screen and (min-width: $tablet) {
+            transform: scale(1.2);
+
+            &:hover {
+                transform: scale(1.5) rotate(-5deg);
+            }
+        }
+    }
+
+    &.is-huge {
+
+        @media screen and (min-width: $tablet) {
+            transform: scale(1.5);
+
+            &:hover {
+                transform: scale(1.8) rotate(-5deg);
+            }
+        }
+    }
+
+
+}
+
+
+.bottle {
+    background-size    : contain;
+    background-repeat  : no-repeat;
+    background-position: center bottom;
+    background-image   : url('../images/bottles/classic.png');
+    position           : absolute;
+
+    &.classic {
+        background-image: url('../images/bottles/classic.png');
+    }
+
+    &.amer {
+        background-image: url('../images/bottles/amer.png');
+    }
+
+    &.blue {
+        background-image: url('../images/bottles/blue.png');
+    }
+
+    &.blueberry {
+        background-image: url('../images/bottles/blueberry.png');
+    }
+
+    &.cocktail {
+        background-image: url('../images/bottles/cocktail.png');
+    }
+
+    &.cranberry {
+        background-image: url('../images/bottles/cranberry.png');
+    }
+
+    &.guava {
+        background-image: url('../images/bottles/guava.png');
+    }
+
+    &.ice {
+        background-image: url('../images/bottles/ice.png');
+    }
+}
+
+.m {
+    @media screen and (min-width:$tablet) {
+        display: none !important;
+    }
+}
+
+.d {
+    @media screen and (max-width:$tablet) {
+        display: none !important;
+    }
+}
+
+.flex-break {
+    flex-basis: 100%;
+    height: 0;
+  }
+
+input:not(.enter-icon),
+textarea,
+select {
+    background   : none !important;
+    border-radius: 0 !important;
+    border       : 0 !important;
+    border-bottom: black solid 3px !important;
+    box-shadow   : none !important;
+    color        : black ;
+    width        : 100% !important;
+    font-weight  : bold;
+    min-height   : 50px;
+
+
+    &::placeholder {
+        color: black !important;
+    }
+
+}
+
+.select {
+    &::after {
+        border-color: black !important;
+    }
+
+    select {
+        width: 100vw !important;
+        color: black;
+    }
+}
+
+body {
+    cursor: url('../images/click.png'), auto;
+    cursor: url('../images/click.cur'), auto;
+}
+a, .button, .next, .prev, select, option,form *, input, iframe, iframe *, .bottle-tilt-bottle{
+    cursor: url('../images/cursor.png'), pointer !important;
+    cursor: url('../images/cursor.cur'), pointer !important;
+}
+
+@media screen and (max-width: $tablet) {
+    html, body{
+        max-width: 100vw!important;
+        overflow-x: hidden!important;
+    }
+}

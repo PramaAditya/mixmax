@@ -1,0 +1,41 @@
+name: MixMax
+description: 'Mixmax theme by Balkat'
+author: Balkat
+homepage: balkat.com
+author_code: balkat
+code: bulma-starter
+parent: ''
+database: '0'
+
+form:
+    fields:
+        ig_feed:
+            label: Floating IG Photos
+            type: instagramfeed
+        instagram:
+            label: Instagram
+            comment: URL Instagram
+            default: https://www.instagram.com/mixmax_vodka
+        facebook:
+            label: Facebook
+            comment: URL facebook
+        spotify:
+            label: Spotify
+            comment: URL Profil Spotify
+            default: https://open.spotify.com/user/gf86cydkzp148l164dzx2e91k
+        shopee:
+            label: Shopee
+            comment: URL for Shopee store
+            default: https://shopee.co.id/kawanminum
+        tokopedia:
+            label: Tokopedia
+            comment: URL for Tokopedia store
+            default: https://www.tokopedia.com/kawanminum
+        bukalapak:
+            label: Bukalapak
+            comment: URL for Bukalapak store
+            default: https://www.bukalapak.com/u/merchantsts?from=omnisearch&from_keyword_history=false&search_source=omnisearch_user&source=navbar
+        blibli:
+            label: BliBli
+            comment: URL for BliBli store
+            default: https://www.blibli.com/merchant/kawan-minum-official-store/SUT-39988

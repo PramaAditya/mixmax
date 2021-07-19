@@ -1,0 +1,28 @@
+plugin:
+    name: 'balkat.mixmax::lang.plugin.name'
+    description: 'balkat.mixmax::lang.plugin.description'
+    author: Balkat
+    icon: oc-icon-beer
+    homepage: ''
+navigation:
+    flavor:
+        label: Flavors
+        url: balkat/mixmax/flavors
+        icon: icon-beer
+        sideMenu:
+            all-flavors:
+                label: 'All Flavors'
+                url: balkat/mixmax/flavors
+                icon: icon-align-justify
+            recipes:
+                label: Recipes
+                url: balkat/mixmax/recipes
+                icon: icon-glass
+    Stores:
+        label: Stores
+        url: balkat/stores/store
+        icon: icon-building
+    global_settings:
+        label: Site Settings
+        url: cms/themeoptions/update/theme-starter
+        icon: icon-sliders

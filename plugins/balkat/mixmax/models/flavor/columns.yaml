@@ -1,0 +1,54 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: name
+        type: text
+    description:
+        label: description
+        type: text
+        invisible: true
+    spotify_title:
+        label: spotify_title
+        type: text
+        invisible: true
+    spotify_url:
+        label: spotify_url
+        type: text
+        invisible: true
+    spotify_cover:
+        label: spotify_cover
+        type: text
+        invisible: true
+    spotify_sc:
+        label: spotify_sc
+        type: text
+        invisible: false
+    sort_order:
+        label: sort_order
+        type: number
+        invisible: true
+    image:
+        label: image
+        type: text
+        invisible: true
+    ig_photos:
+        label: ig_photos
+        type: text
+        invisible: true
+    ig_filter_url:
+        label: ig_filter_url
+        type: text
+        invisible: true
+    spotify_description:
+        label: spotify_description
+        type: text
+        invisible: true
+    color:
+        label: color
+        type: text
+        invisible: true
+    slug:
+        label: slug
+        type: text

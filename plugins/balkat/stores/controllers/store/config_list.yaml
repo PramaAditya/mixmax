@@ -1,0 +1,12 @@
+list: $/balkat/stores/models/store/columns.yaml
+modelClass: Balkat\Stores\Models\Store
+title: Store
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'balkat/stores/store/update/:id'

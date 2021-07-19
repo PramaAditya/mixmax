@@ -1,0 +1,20 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        type: text
+    image:
+        label: Image
+        mode: image
+        span: auto
+        type: mediafinder
+    subtitle:
+        label: Subtitle
+        size: small
+        span: full
+        type: richeditor
+    content:
+        label: 'Main Content'
+        size: huge
+        span: full
+        type: richeditor

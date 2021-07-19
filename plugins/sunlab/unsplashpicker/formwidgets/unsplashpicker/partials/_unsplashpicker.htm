@@ -1,0 +1,58 @@
+<?php if (!$this->previewMode): ?>
+<div id="<?= $this->getId() ?>"
+     class="<?= $this->previewMode ? 'is-preview' : '' ?>"
+     data-control="unsplash-picker"
+     data-uploader-id="<?= $this->getId() ?>"
+     data-api-key="<?= $apiKey ?>"
+     data-api-secret="<?= $apiSecret ?>"
+     data-unsplash-preview-template="#<?= $this->getId('unsplash-template') ?>">
+
+    <input
+        type="text"
+        class="unsplash-search form-control w-sm m-b"
+        placeholder="<?= Lang::get('sunlab.unsplashpicker::lang.misc.input_placeholder') ?>"
+        autocomplete="off" />
+
+    <button type="button" class="btn btn-primary search-btn" data-attach-loading><?= Lang::get('sunlab.unsplashpicker::lang.misc.search') ?></button>
+    <div class="field-fileupload style-image-multi is-multi"></div>
+    <div>
+        <button type="button" class="btn btn-primary load-more" data-attach-loading><?= Lang::get('sunlab.unsplashpicker::lang.misc.load_more') ?></button>
+    </div>
+</div>
+
+<!-- Template for new files -->
+<script type="text/template" id="<?= $this->getId('unsplash-template') ?>">
+    <div id="unsplash-block-{{ id }}" class="upload-object dz-preview dz-processing dz-image-preview dz-success is-success dz-complete">
+        <a data-toggle="modal" data-size="giant" href="#preview-{{ id }}" class="icon-container">
+            <img src="{{ urls.thumb }}">
+        </a>
+        <div class="info">
+            <h4 class="filename">
+                <span>{{ description }}</span>
+                <button type="button" class="upload-remove-button add-btn"
+                        data-image-url="{{ urls.full }}"
+                        data-image-thumb="{{ urls.thumb }}"
+                        data-image-id="{{ id }}"
+                        data-image-title="{{ description }}"
+                ><i class="icon-plus"></i></button>
+            </h4>
+            <p class="size">
+                {{ size.width }}px * {{ size.height }}px
+            </p>
+        </div>
+    </div>
+
+    <div class="control-popup modal fade" id="preview-{{ id }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <img src="{{ urls.regular }}" style="max-width: 100%; max-height: calc(100%-20px)">
+                    <p class="author-text text-center"><?= Lang::get('sunlab.unsplashpicker::lang.misc.photo_by') ?> <a href="{{ author.link }}" target="_blank">{{ author.name }}</a> <?= Lang::get('sunlab.unsplashpicker::lang.misc.on') ?> <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<?php endif ?>

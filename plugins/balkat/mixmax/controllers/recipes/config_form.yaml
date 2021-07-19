@@ -1,0 +1,10 @@
+name: Recipes
+form: $/balkat/mixmax/models/recipe/fields.yaml
+modelClass: Balkat\Mixmax\Models\Recipe
+defaultRedirect: balkat/mixmax/recipes
+create:
+    redirect: 'balkat/mixmax/recipes/update/:id'
+    redirectClose: balkat/mixmax/recipes
+update:
+    redirect: balkat/mixmax/recipes
+    redirectClose: balkat/mixmax/recipes

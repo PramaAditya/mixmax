@@ -1,0 +1,44 @@
+{% spaceless %}
+
+<div class="notification is-{{ type }}" >
+    <!-- <button class="delete"></button> -->
+
+{% if title %}
+    <h4>{{ title }}</h4>
+{% endif %}
+
+{% if content %}
+    {{ content }}
+{% endif %}
+
+{% if list %}
+    <ul>
+    {% for item in list %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+</div>
+
+{% if jscript %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+              (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                var $notification = $delete.parentNode;
+            
+                $delete.addEventListener('click', () => {
+                  $notification.parentNode.removeChild($notification);
+                });
+              });
+            });
+    </script>
+    <script>
+        {% if errors %}
+            var errors = JSON.parse('{{ errors|raw }}');
+        {% endif %}
+        {{ jscript|raw }}
+    </script>
+{% endif %}
+
+{% endspaceless %}

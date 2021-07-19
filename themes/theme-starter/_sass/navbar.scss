@@ -1,0 +1,68 @@
+$burger-size: 60px;
+$mobile-burger-size: 37px;
+$logo-size: 200px;
+$mobile-logo-size: 129px;
+
+nav.nav{
+    @extend .container;
+    @extend .section;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    @media screen and (min-width: $tablet) {
+        padding: 1.5em 0;
+    }
+}
+
+
+.navbar-logo{
+    img{
+        @media screen and (min-width: $tablet) {
+            max-width: $logo-size;
+        }
+        @media screen and (max-width: $tablet) {
+            max-width: $mobile-logo-size;
+        }
+        
+    }
+}
+.nav-burger{
+    
+    background-image: url("../images/nav_burger.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    @media screen and (min-width: $tablet) {
+        height: $burger-size;
+        width: $burger-size;
+    }
+    @media screen and (max-width: $tablet) {
+        height: $mobile-burger-size;
+        width: $mobile-burger-size;
+    }
+}
+
+#navbar-scroll{
+    position: fixed;
+    width: 100%;
+    margin: auto;
+    left: 50%;
+    top: 0;
+    z-index: 99;
+    transform: translateY(-200px) translateX(-50%) !important;
+    transition: all .7s ease-in-out;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.0));
+    &.is-active{
+        transform: translateY(0) translateX(-50%) !important;
+        filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.2));
+    }
+    
+}
+
+.nav-spacer{
+    height: 150px;
+    width: 100%;
+}
+
+footer{
+    padding-bottom: 150px !important; //fix
+}

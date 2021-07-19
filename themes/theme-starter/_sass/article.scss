@@ -1,0 +1,78 @@
+#article{
+    background: $hijau;
+    .thumbnail {
+        @include box(300px, -5deg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        float: right;
+        margin-left: 50px;
+        margin-top: 110px;
+        margin-right: 20px;
+        margin-bottom: 40px;
+    }
+    section.section{
+        padding-top: 5em; 
+    }
+    .content{
+        *{
+            color: black;
+        }
+        .title{
+            font-size: 8.5rem;
+            line-height: .8;
+            margin-bottom: 4rem;
+            margin-top: 0;
+        }
+        .subtitle{
+            line-height: 1.25;
+        }
+    }
+    #article-control {
+        margin-top: 5em;
+        margin-bottom: 1em;
+        display   : flex;
+        align-self: center;
+        justify-content: center;
+        z-index: 100;
+        position: relative;
+
+        .prev {
+            transform: rotate(180deg);
+            &:hover{
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+        .next{
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+
+        .next,
+        .prev {
+            width : 60px;
+            height: 50px;
+            margin: 0 2em;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+        }
+    }
+    @media screen and (max-width: $tablet) {
+        section.section{
+            padding-top: 0em; 
+        }
+        .title{
+            font-size: 3.5em !important;
+        }
+        .subtitle{
+            font-size: 1.25em!important;
+        }
+        .thumbnail{
+            transform: rotate(-5deg) scale(.6);
+            margin-bottom: -5px;
+            margin-top: -50px;
+        }
+        
+    }
+}

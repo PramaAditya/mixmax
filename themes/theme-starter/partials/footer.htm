@@ -1,0 +1,83 @@
+[builderList bottleList]
+modelClass = "Balkat\Mixmax\Models\Flavor"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "flavor"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+==
+
+function onStart()
+{
+    $bottles = $this->bottleList->records;
+    $total = count($bottles)-1;
+    $rnd1 = rand(0,$total);
+    do {
+      $rnd2 = rand(0,$total);
+    } 
+    while ($rnd1 == $rnd2);
+    $this['rnd2'] = $rnd2;
+    $this['bottle1'] = $bottles[$rnd1];
+    $this['bottle2'] = $bottles[$rnd2];
+    
+}
+
+
+
+==
+{# {% set bottles = bottleList.records %} #}
+
+
+<footer>
+  <div class="newsletter">
+    <h1 class="header">
+      Join the mix?
+    </h1>
+    <div class="newsletter-field">
+      <input type="email" name="email" id="email-input" required placeholder="Enter your email">
+      <input type="submit" class="enter-icon" value=""></input>
+      
+    </div>
+    <p class="label">
+      We won't spam
+    </p>
+    
+  </div>
+  <div class="container">
+    <div class="menus">
+      <a href="{{'buy' | page}}" class="button is-large">Shop MixMax</a>
+      <div class="level">
+        <div class="level-item copyright d">
+          <p>
+            © 2021 Mixmax Vodka<br>
+            Design & Build Site by <strong><a href="https://balkat.com" target="_blank">Balkat</a></strong>, All Rights Reserved.
+          </p>
+        </div>
+        <div class="level-item by">
+          <p>
+            A product by
+          </p>
+          <img src="{{'assets/images/orangtua_logo.png'|theme}}" alt="Orangtua">
+        </div>
+        <div class="level-item menu">
+          <a href="{{'contact'|page}}">Contact</a>
+          <a target="_blank" href="{{ this.theme.instagram }}">Instagram</a>
+          <a target="_blank" href="{{ this.theme.facebook }}">Facebook</a>
+        </div>
+        <div class="level-item copyright m">
+          <p>
+            © 2021 Mixmax Vodka<br>
+            Design & Build Site by <strong>Balkat</strong>, All Rights Reserved.
+          </p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="bottle wow animate__fadeInUp left" style="background-image:url({{bottle1.image | media }})"></div>
+  <div class="bottle wow animate__fadeInUp right" style="background-image:url({{bottle2.image | media }})"></div>
+</footer>

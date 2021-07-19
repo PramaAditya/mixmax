@@ -1,0 +1,303 @@
+url = "/flavor/:slug"
+layout = "mixmax"
+title = "Flavor"
+is_hidden = 0
+
+[builderDetails flavorDetails]
+modelClass = "Balkat\Mixmax\Models\Flavor"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "slug"
+notFoundMessage = "Flavor not found"
+
+[builderList bottleList]
+modelClass = "Balkat\Mixmax\Models\Flavor"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "flavor"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+
+[builderList recipeList]
+modelClass = "Balkat\Mixmax\Models\Recipe"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "flavor"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+
+[Agent]
+==
+use Balkat\Mixmax\Models\Flavor;
+
+function onEnd() {    
+    $thisOrder =  $this->components['flavorDetails']->record->id;
+    $lastOrder = Flavor::count();
+
+    try{
+        $nextFlavor = Flavor::where('id','=',$thisOrder + 1)->get()[0];
+        
+    }
+    catch (Exception $ex) {
+        $nextFlavor = Flavor::where('id','=',1)->get()[0];
+    }
+    try{
+        $prevFlavor = Flavor::where('id','=',$thisOrder - 1)->get()[0];
+    }
+    catch (Exception $ex) {
+        $prevFlavor = Flavor::where('id','=',$lastOrder)->get()[0];
+    }
+    $this['thisOrder'] = $thisOrder;
+    $this['nextFlavor'] = $nextFlavor;
+    $this['prevFlavor'] = $prevFlavor;
+    
+}
+==
+{% set bottles = bottleList.records %}
+
+{% set recipes = recipeList.records %}
+
+
+{% set record = flavorDetails.record %}
+{% set displayColumn = flavorDetails.displayColumn %}
+{% set notFoundMessage = flavorDetails.notFoundMessage %}
+{% set photos = record.ig_photos %}
+
+
+<style>
+    #spotify-playlist {
+        background-color: {{record.color_1}};
+    }
+
+    #flavor-detail {
+        background-color: {{record.color_2}};
+    }
+
+    #instagram-filter {
+        background-color: {{record.color_3}};
+    }
+</style>
+
+{% if Agent.isDesktop() %}
+    {% put scripts %}
+    <script>
+        var wave1 = $('#wave').wavify({
+            height: 40,
+            bones: 3,
+            amplitude: 60,
+            color: '{{record.color_1}}',
+            speed: 0.2
+            });
+
+        wave1.play();
+    </script>
+    {% endput %}
+    <section class="section full-width" id="flavor-select">
+        <div class="container">
+            <div class="d columns luxy-el" data-speed-y="7" data-offset="-50">
+                {% for flavor in bottles%}
+                <a class="bottle-flavor column wow animate__fadeInUp 
+
+                {% if flavor.slug == record.slug%}
+                active
+                {% endif %}
+                " data-wow-delay="{{ (loop.index0 * 1.5)/10}}s" href="
+                {% if detailsPage %}
+                {{ detailsPage|page({ (detailsUrlParameter): attribute(flavor, detailsKeyColumn) }) }}
+                {% endif %}
+                
+                ">
+                    <img src="{{flavor.image | media }}" alt="{{flavor.name}}" class="image" width="150">
+
+
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% else %}
+    {% put scripts %}
+    <script>
+        var wave1 = $('#wave').wavify({
+            height: 5,
+            bones: 1,
+            amplitude: 60,
+            color: '{{record.color_1}}',
+            speed: 0.2
+            });
+
+        wave1.play();
+    </script>
+    {% endput %}
+    <section class="section" id="mobile-select">
+        <a href="
+            {{'flavor' | page({'slug': prevFlavor.slug})}}
+        ">
+            <img src="{{'assets/images/arrow.svg' | theme}}" alt="Prev" class="prev">
+        </a>
+        <div class="flavor-bottle">
+            <img id="image" src="{{record.image | media }}" alt="{{record.name}}"  width="150" class="image">
+            <div class="dots">
+                {% for flavor in bottles%}
+                    <div class="dot
+                    {% if flavor.slug == record.slug%}
+                    active
+                    {% endif %}
+                    "></div>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="
+            {{'flavor' | page({'slug': nextFlavor.slug})}}
+        ">
+            <img src="{{'assets/images/arrow.svg' | theme}}" alt="Next" class="next">
+        </a>
+    </section>
+{% endif %}
+<section class="section full-width" id="placeholder-divider">
+    <div class="svg-container">
+        <svg height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="wave divider-w-text">
+            <defs></defs>
+            <path id="wave" d="" />
+
+            <text class="text" width="100%">
+                <textPath side="left" alignment-baseline="bottom" xlink:href="#wave">
+                    {% for x in 1..10 %}
+                       Choose your flavor and then you can get a new experience! &nbsp;
+                    {% endfor %}
+                    <animate attributeName="startOffset" from="-800px" to ="10px" begin="0s" dur="20s" repeatCount="indefinite"/>
+                </textPath>
+            </text>
+
+        </svg>
+
+    </div>
+</section>
+
+<div id="flavor-container" class="{{record.slug}}">
+    <section class="section full-width divide bottom is-5" id="spotify-playlist">
+        <div class="container">
+            <div class="columns spotify-album animate__animated animate__fadeIn">
+                <div class="column is-5 spotify-album__thumbnail luxy-el" data-speed-y="2" data-offset="0">
+                    <div id="spotify_cover" class="thumbnail"
+                        style="background-image: url('{{record.spotify_cover | media}}');">
+                    </div>
+                </div>
+                <div class="column spotify-album__info">
+                    <h1 id="spotify_title" class="spotify-album__title">
+                        {{record.spotify_title}}
+                    </h1>
+                    <div id="spotify_description" class="spotify-album__excerpt">
+                        {{record.spotify_description | raw}}
+                    </div>
+                    <a id="spotify_url_1" target="_blank" href="https://open.spotify.com/playlist/{{record.spotify_id}}" class="">
+                        <img src="{{'assets/images/spotify-btn.png' | theme}}" alt="" class="image">
+                    </a>
+                </div>
+            </div>
+            <div class="columns spotify-screenshot ">
+                <div class="column is-5 screenshot wow animate__fadeIn ">
+                    <!-- <img src="{{'assets/images/spotify-screenshot.png' | theme}}" alt="{{'Ice'}}" class="image"> -->
+                    <div class="luxy-el" data-speed-y="4" data-offset="-80">
+                        <div class="spotify-embed">
+                            <iframe src="https://open.spotify.com/embed/playlist/{{record.spotify_id}}" frameborder="0"
+                                allowtransparency="true" allow="encrypted-media"></iframe>
+                        </div>
+                    </div>
+
+                    <a id='spotify_url_2' target="_blank" href="https://open.spotify.com/playlist/{{record.spotify_id}}" class="button is-medium">
+                        Listen Now
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="section" id="flavor-detail">
+        <div class="container">
+            <div class="columns is-mobile">
+                <div class="column is-half">
+                    <div class="flavors-images">
+                        {% for image in record.flavor_images %}
+                        <img src="{{image.image | media }}" width="150" height="150" alt="{{record.name}}"
+                            class="flavor-image wow animate__fadeInUp">
+                        {% endfor %}
+                    </div>
+                    <h1 id="name" class="title wow animate__fadeIn">
+                        {{record.name | raw}}
+                    </h1>
+                    <div id="description" class="description wow animate__fadeIn">
+                        {{record.description | raw}}
+                    </div>
+                    <a href="{{'buy' | page}}" class="button is-medium wow animate__fadeIn">
+                        Shop MixMax
+                    </a>
+                </div>
+                <div class="column big-bottle luxy-el" data-speed-y="7" data-offset="-50">
+                    <img id="image" src="{{record.image | media }}" alt="{{record.name}}" width="500" class="image">
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="section full-width hijau floaters divide top bottom is-6" id="instagram-filter">
+
+        <div class="image-container">
+            <img src="{{'assets/images/filter-phone.png' | theme }}" width="770" alt="" class="images luxy-el" data-speed-y="7"
+                data-offset="-400">
+        </div>
+        <div class="info has-text-centered">
+
+            <h1 class="title">
+                Share your color
+            </h1>
+            <p class="description">
+                To complete the fun in choosing your color, we are also
+                proud to present a special Instagram filter for those of you
+                who want to find their color.
+            </p>
+            <a href="{{record.ig_filter_url}}" class="button is-medium">
+                Try it <img src="{{'assets/images/icon-ig.svg' | theme}}" alt="" class="button__icon">
+            </a>
+        </div>
+        <div class="scroller">
+            <div class="scroller__container">
+                <div class="toScroll">
+                    {% for x in 1..2 %}
+                    <div class="floaters__container">
+
+                        {% for photo in photos %}
+                        {% if loop.index is odd %}
+                        {% set pos = 'top' %}
+                        {% set y = (loop.index / 2)|round(0, 'ceil') %}
+                        {% else %}
+                        {% set pos = 'bottom' %}
+                        {% set y = (loop.index / 2)|round(0, 'ceil') %}
+                        {% endif %}
+                        <div class="afloat {{pos}}-{{y}}" style="
+                                animation-duration: {{random(2,5)}}s;
+                            ">
+                            <div class="
+                                floater 
+                            " style="
+                                background-image: url('{{photo.photo | media}}');
+                            ">
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+{% partial 'recipes' recipes=recipes %}

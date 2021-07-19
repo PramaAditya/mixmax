@@ -1,0 +1,39 @@
+.frozendo-pagepreview {
+    z-index: 590;
+}
+
+.frozendo-pagepreview .modal-dialog {
+    width: 90%;
+    margin: 6vh auto;
+}
+
+.frozendo-pagepreview .modal-header {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.frozendo-pagepreview .modal-header a {
+    float: left;
+    margin-left: 10px;
+}
+
+.frozendo-pagepreview .modal-header .btn {
+    padding: 7px 16px;
+}
+
+.frozendo-pagepreview .modal-header .close {
+    float: right;
+    margin-top: 0;
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+.frozendo-pagepreview .modal-body {
+    padding: 0 5px 5px 5px;
+}
+
+.frozendo-pagepreview iframe {
+    width: 100%;
+    height: 80vh;
+    border: 0;
+}

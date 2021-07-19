@@ -1,0 +1,162 @@
+#buy {
+    background-image   : url('../images/2-bg.svg');
+    background-size    : cover;
+    background-position: center center;
+    min-height         : 100vh;
+    .page-title{
+        font-family: 'Cooper';
+        text-align: center;
+        font-size: 4em;
+        color: white;
+        margin: -10px 0 30px;
+    }
+    .buy-section {
+        padding-top: 0;
+
+        .column {
+            .title {
+                color        : white;
+                font-size    : 2.6em;
+                margin-bottom: .5em;
+            }
+        }
+
+        .online {
+            text-align: center;
+            .kawanminum{
+                margin: 20px 0;
+            }
+            .buy-links {
+                height         : 120px;
+                display        : flex;
+                align-items    : center;
+                justify-content: space-around;
+                max-width      : 500px;
+                margin         : auto;
+
+                a,
+                img {
+                    height    : 85%;
+                    transition: all .2s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+
+        .offline {
+            text-align: center;
+
+            .title {
+                margin-bottom: 1em;
+            }
+        }
+
+        .available {
+            text-align     : center;
+            color          : white;
+            font-size      : 1.5em;
+            font-weight    : bold;
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            margin-top     : 3em;
+
+            .stores{
+                max-width: 280px;
+            }
+
+            
+        }
+    }
+}
+
+.stores{
+    display: flex;
+    flex-wrap: wrap;
+    .store {
+        display         : flex;
+        align-items     : center;
+        justify-content : center;
+        height          : 60px;
+        width           : 60px;
+        padding         : 7px;
+        background-color: white;
+        border-radius   : 20px;
+        margin          : 5px 5px;
+    }
+}
+
+#buy{
+    @media screen and (max-width: $tablet) {
+        background-image:url('../images/contact-bg-m.svg') ;
+        background-color: $kuning;
+        background-position: center 400px;
+        background-repeat: no-repeat;
+       
+        .online{
+            text-align: left!important;
+            height: 80vh;
+            h1{
+                font-size: 3em!important;
+                color: black!important;
+                text-align: left!important;
+            }
+        }
+        .offline{
+            text-align: left!important;
+            h1{ 
+                font-size: 2em!important;
+                color: white!important;
+                text-align: left!important;
+                margin-bottom: 10px!important;
+            }
+        }
+        .buy-links{
+            margin-left: 0!important;
+            justify-content: flex-start!important;
+            a{
+                margin-right: 15px;
+                padding: 0 !important;
+                height: 60px !important;
+                width: 60px !important;
+            }
+            img{
+                height: auto !important;
+                width: 100%;
+                // margin-right: 15px;
+            }
+        }
+        .page-title{
+            font-size: 8.5vw;
+            margin-bottom: -10px!important;
+            text-align: left;
+            color: black
+        }
+        
+        .kawanminum{
+            height: 150px;
+        }
+        .button{
+            padding-left: 60px;
+            padding-right: 80px;
+        }
+        .available{
+            align-items: center !important;
+            justify-content: flex-start!important;
+            font-size: 14px !important;
+            margin-left: -2em;
+            margin-right: -2em;
+        }
+        .stores{
+            max-width: 200px!important;
+        }
+        .store{
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+        }
+    }
+}

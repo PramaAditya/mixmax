@@ -1,0 +1,11 @@
+plugin:
+    name: 'balkatplugins.articles::lang.plugin.name'
+    description: 'balkatplugins.articles::lang.plugin.description'
+    author: BalkatPlugins
+    icon: oc-icon-adn
+    homepage: ''
+navigation:
+    Articles:
+        label: 'balkatplugins.articles::lang.plugin.name'
+        url: balkatplugins/articles/articles
+        icon: icon-edit

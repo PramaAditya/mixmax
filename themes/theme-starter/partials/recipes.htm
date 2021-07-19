@@ -1,0 +1,113 @@
+[Agent]
+==
+<section class="section full-width divide bottom is-6 kuning" id="recipes">
+    <div class="container has-text-centered">
+        <h1 class="title">
+            Magic Mix
+        </h1>
+        <h2 class="subtitle">
+         Get mixing with our refreshing Magic Mix ideas
+        </h2>
+    </div>
+    <div class="slider-container">
+        <div class="recipes-slider">
+
+            {% for recipe in recipes %}
+            <div class="recipe">
+                <a class="recipe-img" style="background-image: url({{recipe.image | media }});">
+                    <video autoplay muted loop id="myVideo">
+                        <source src="{{recipe.video | media }}" type="video/mp4">
+                    </video>
+                </a>
+                <div class="recipe-detail">
+                    <h1 class="title">
+                        {{recipe.name}}
+                    </h1>
+                    <div class="content">
+                        {{recipe.details | raw}}
+                    </div>
+                    <a class="close-btn"></a>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+        <div class="prev"></div>
+        <div class="next"></div>
+    </div>
+
+    <a id="to-top" onclick='window.scrollTo({top: 0, behavior: "smooth"});'>
+        Explore other flavor
+        <span class="icon">
+            <i class="fas fa-long-arrow-alt-up"></i>
+        </span>
+
+
+    </a>
+    <!-- <img src="{{'assets/images/placeholder.png' | theme}}" alt="" class="image placeholder"> -->
+    {% put scripts%}
+    <script>
+        {% if Agent.isDesktop() %}
+        $('.recipes-slider').slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            variableWidth: true,
+            speed: 1000,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            easing: 'ease-in-out',
+            accessibility: false,
+            autoplay: true,
+            autoplaySpeed: 1000,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            focusOnSelect: true,
+        });
+        {% else %}
+        $('.recipes-slider').slick({
+            centerMode: true,
+            centerPadding: '0px',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            variableWidth: true,
+            speed: 2000,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            easing: 'ease-in-out',
+            accessibility: false,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            focusOnSelect: true,
+        });
+        {% endif %}
+        $('.recipe .recipe-img').on('click', function (e) {
+            var id = $(this).closest('.recipe').data('slick-index');
+            // alert(id);
+            $('.recipes-slider').slick('slickGoTo',id);
+            $('.recipe').removeClass('active');
+            $(this).closest('.recipe').addClass('active');
+            
+            $('.recipes-slider').slick('slickPause');
+            $('.recipes-slider').slick('setPosition');
+        });
+
+        $('.recipe .close-btn').on('click', function (e) {
+            $(this).closest('.recipe').removeClass('active');
+            $('.recipes-slider').slick('setPosition');
+            $('.recipes-slider').slick('slickPlay');
+        });
+
+        $('.slider-container .prev, .slider-container .next').on('click', function (e) {
+            $('.recipes-slider .recipe').removeClass('active');
+            $('.recipes-slider').slick('slickPlay');
+        });
+
+    </script>
+    {% endput %}
+
+</section>

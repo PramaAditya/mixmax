@@ -1,0 +1,151 @@
+fields:
+    section_title:
+        label: 'netsti.seo::lang.fields.titletag'
+        span: full
+        type: section
+    title:
+        label: 'netsti.seo::lang.fields.title'
+        span: auto
+        placeholder: 'Sitename |'
+        trigger:
+            action: show
+            field: enable_title
+            condition: checked
+        type: text
+        comment: 'netsti.seo::lang.fields.title_comment'
+    title_position:
+        label: 'netsti.seo::lang.fields.appear'
+        options:
+            prefix: 'Prefix (at start)'
+            suffix: 'Suffix (at end)'
+        span: auto
+        trigger:
+            action: show
+            field: enable_title
+            condition: checked
+        type: radio
+        comment: 'netsti.seo::lang.fields.appear_comment'
+    enable_title:
+        label: 'netsti.seo::lang.fields.enable_title'
+        span: auto
+        type: switch
+        comment: 'netsti.seo::lang.fields.enable_title_comment'
+    section_open:
+        label: 'netsti.seo::lang.fields.open_graph'
+        span: full
+        type: section
+    og_sitename:
+        label: 'netsti.seo::lang.fields.og_sitename'
+        span: auto
+        trigger:
+            action: show
+            field: enable_og_tags
+            condition: checked
+        type: text
+        comment: 'netsti.seo::lang.fields.og_sitename_comment'
+    og_fb_appid:
+        label: 'Facebook App Id'
+        span: auto
+        trigger:
+            action: show
+            field: enable_og_tags
+            condition: checked
+        type: text
+        comment: 'netsti.seo::lang.fields.og_facebookid_comment'
+    enable_og_tags:
+        label: 'netsti.seo::lang.fields.enable_og'
+        span: auto
+        type: switch
+    section_icons:
+        label: 'netsti.seo::lang.fields.icons_section'
+        span: full
+        type: section
+    favicon:
+        label: Favicon
+        mode: image
+        imageWidth: '64'
+        imageHeight: '64'
+        fileTypes: 'ico,png'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        commentAbove: 'netsti.seo::lang.fields.favicon'
+    appicon:
+        label: 'netsti.seo::lang.fields.app_icon'
+        mode: image
+        imageWidth: '192'
+        imageHeight: '192'
+        fileTypes: 'png,jpg'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        commentAbove: 'netsti.seo::lang.fields.app_image_comment'
+    sectionmain:
+        label: 'netsti.seo::lang.fields.others'
+        span: full
+        type: section
+    other_tags:
+        label: 'netsti.seo::lang.fields.other_tags'
+        size: large
+        language: twig
+        span: full
+        type: codeeditor
+        commentAbove: 'netsti.seo::lang.fields.other_tags_comment'
+    enable_canonical_url:
+        label: 'netsti.seo::lang.fields.canonical'
+        span: auto
+        type: switch
+        comment: 'netsti.seo::lang.fields.canonical_comment'
+    responsive:
+        label: Responsive
+        span: auto
+        type: switch
+        comment: 'netsti.seo::lang.fields.responsive'
+    rev_scale:
+        label: 'netsti.seo::lang.fields.scale'
+        oc.commentPosition: ''
+        span: auto
+        placeholder: '1.0'
+        trigger:
+            action: show
+            field: responsive
+            condition: checked
+        default: '1.0'
+        type: text
+    size:
+        label: 'netsti.seo::lang.fields.size'
+        oc.commentPosition: ''
+        options:
+            width=device-width: 'Device Width'
+            height=device-height: 'Device Height'
+            custom: 'Custom Size'
+        span: auto
+        trigger:
+            action: show
+            field: responsive
+            condition: checked
+        type: dropdown
+    width:
+        label: Width
+        oc.commentPosition: ''
+        span: auto
+        trigger:
+            action: show
+            field: size
+            condition: 'value[custom]'
+        type: number
+    height:
+        label: Height
+        oc.commentPosition: ''
+        span: auto
+        trigger:
+            action: show
+            field: size
+            condition: 'value[custom]'
+        type: number

@@ -1,0 +1,54 @@
+<h1 id="unique-scroll-coba">
+    YOU ARE UNIQUE AND SPECIAL
+</h1>
+
+{% put styles %}
+<style>
+    #unique-scroll-coba {
+        position: fixed;
+        /* Left 100vw supaya tidak terlihat */
+        left: 100vw;
+        z-index: 10;
+        /* top boleh disesuaikan */
+        top: 40%;
+    }
+</style>
+{% endput %}
+
+{% put scripts %}
+<script>
+    $(document).ready(function () {
+        
+        var $textToScroll = $('#unique-scroll-coba');
+        
+        // Container untuk textnya. Karena textnya position fixed, text posisinya boleh saja ada di luar container 
+        var $container = $('#unique');
+
+        // Panjangnya Text
+        var textWidth = $textToScroll.outerWidth(); 
+        
+        // Lebar Browser
+        var windowWidth = $(window).width(); 
+
+        // Posisi atas container, sebagai tanda kapan tulisan mulai masuk
+        var containerTop = $container.position().top;
+
+        // Posisi mulai text, dalam kasus ini 100vw, diubah menjadi px
+        var textStartPosition = $textToScroll.position().left;
+        
+        var textSpeed = 2;
+
+        $(window).scroll(function () {
+            var st = $(this).scrollTop() - containerTop; // -containerTop supaya baru mulai scroll setelah posisi scroll window ada di posisi top nya container
+            var newPos = (- st * (textSpeed)) + textStartPosition; // -st supaya gerak dari kanan ke kiri
+            $textToScroll.css({ 'left': newPos }); // ubah posisi text yang di scroll
+
+            // console.log(textStartPosition);
+        });
+
+        // Atur tinggi container supaya cukup dari awal text sampai akhir
+        var containerHeight = textWidth - (textSpeed / 2.25 * windowWidth); //3 is an artbitrary fix, boleh diubah-ubah berdasarkan kebutuhan
+        $container.css({ 'height': containerHeight + 'px' });
+    });
+</script>
+{% endput %}

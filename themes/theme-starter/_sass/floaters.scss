@@ -1,0 +1,105 @@
+.floaters{
+    $f-w: 2000px;
+    $f-z: 300px;
+    $f-zm: 230px;
+    min-height: 120vh;
+    
+    .scroller, &__container{
+        width: $f-w;
+        // margin-right: calc(#{$f-w} / 5);
+        min-height: 120vh;
+        position: relative;
+        
+        overflow:visible;
+        z-index: 60;
+        @media screen and (max-width: $tablet) {
+            width: 1000px !important;
+        }
+    }
+    .scroller{
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+    }
+    .floater{
+        height: $f-z;
+        width: $f-z;
+        box-shadow: ($f-z/10) ($f-z/10) 0 rgba(0,0,0,$shadow-opacity);
+        border-radius: ($f-z/10);
+        @media screen and (max-width:$tablet) {
+            height: $f-zm;
+            width: $f-zm;
+            box-shadow: ($f-zm/10) ($f-zm/10) 0 rgba(0,0,0,$shadow-opacity);
+            border-radius: ($f-zm/10);
+        }
+        z-index: 70;
+        
+        background-size: cover;
+        background-position: center center;
+        transform: translateY(10px);
+        
+    }
+    
+    .afloat{
+        position: absolute;
+        animation: float 5s ease-in-out infinite;
+        &.top-1{
+            top: 0%;
+            left: 3%;
+            
+            .floater{
+                background-color: violet;
+                transform: rotate(5deg);
+            }
+        }
+        &.bottom-1{
+            bottom: 0%;
+            left: 18%;
+            
+            .floater{
+                background-color: violet;
+                transform: rotate(9deg);
+            }
+        }
+        &.top-2{
+            top: 5%;
+            left: 37%;
+            
+            .floater{
+                background-color: blue;
+                transform: rotate(-7deg);
+            }
+        }
+        &.bottom-2{
+            bottom: 5%;
+            left: 54%;
+            
+            .floater{
+                background-color: blue;
+                transform: rotate(3deg);
+            }
+        }
+        &.top-3{
+            top: 3%;
+            left: 74%;
+            
+            .floater{
+                background-color: yellow;
+                transform: rotate(3deg);
+            }
+        }
+        
+        
+        &.bottom-3{
+            bottom: 2%;
+            left: 83%;
+            
+            .floater{
+                background-color: yellow;
+                transform: rotate(-2deg);
+            }
+        }
+    }
+}

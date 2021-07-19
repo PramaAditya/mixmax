@@ -1,0 +1,7 @@
+plugin:
+    name: 'balkat.stores::lang.plugin.name'
+    description: 'balkat.stores::lang.plugin.description'
+    author: Balkat
+    icon: oc-icon-building
+    homepage: ''
+    

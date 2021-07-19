@@ -1,0 +1,460 @@
+@import "_mixins";
+
+#unique-scroll-coba {
+    margin           : 0;
+    font-size        : 280px;
+    color            : rgba(255, 255, 255, 1);
+    // transition : transform 2s ease;
+    font-family      : 'Cooper';
+    width            : max-content;
+    line-height      : .5;
+    position         : fixed;
+    left             : 100vw;
+    z-index          : 10;
+    top              : 40%;
+    // transition    : all .5s ease-in-out; 
+    @media screen and (max-width: $tablet) {
+        font-size: 140px;
+    }
+
+}
+
+#index {
+    #hero {
+        padding-bottom: $divider-h - 100px;
+
+        // background-color: $kuning;
+        .container {
+            padding: 5em 0;
+        }
+
+        .title {
+            // GEDEIN 10%
+            margin-bottom: 3rem;
+
+            // color: white;
+        }
+
+        .hero-illust {
+            // GEDEIN 20%
+            position: relative;
+            width   : 100%;
+            height  : 600px;
+            width   : 480px;
+
+            @media screen and (max-width: $tablet) {
+                height: 360px;
+                width : 240px;
+            }
+
+            img {
+                height  : 100%;
+                position: absolute;
+                top     : 0;
+                left    : 0;
+                right   : 0;
+                bottom  : 0;
+                margin  : auto;
+            }
+
+            .shape-bg {
+                animation         : float 5s ease-in-out infinite;
+                // animation-delay: 1s;
+            }
+
+            .bottle-img {
+                height   : 80%;
+                left     : -36px;
+                top      : -24px;
+                animation: floatRotate 6s ease-in-out infinite;
+
+                @include shadow;
+
+            }
+        }
+
+        @media screen and (max-width: $tablet) {
+            .hero-illust {
+                transform: scale(0.8);
+            }
+
+            .container {
+                padding-top: 0px;
+                margin-top : -100px;
+                padding    : 0 20px
+            }
+
+            .title {
+                font-size    : 3.5em;
+                margin-bottom: 30px;
+                margin-top   : -20px;
+            }
+
+            .button {
+                font-size: 15px;
+            }
+        }
+
+    }
+
+    #unique {
+        padding   : 0 !important;
+        min-height: 100vh;
+
+    }
+
+    #truecolor {
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+        flex-direction : column;
+
+        background-image: url('../images/circle.svg');
+        background-size : 70%;
+
+        @media screen and (min-width:$tablet) {
+            background-size: 50%;
+        }
+
+        background-position: center center;
+        background-repeat  : no-repeat;
+
+        .title,
+        .hashtag {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 10vw;
+
+            @media screen and (min-width:$tablet) {
+                font-size: 7rem;
+            }
+        }
+
+        .hashtag {
+            color      : $merah;
+            font-weight: bold;
+
+            @media screen and (min-width:$tablet) {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media screen and (max-width: $tablet) {
+            .floater{
+                height: 120px;
+                width: 120px;
+            }
+            &,.scroller, .floaters__container{
+                min-height: 60vh;
+            }
+        }
+    }
+
+
+}
+
+
+
+
+#bottles {
+    padding-top   : calc(#{$divider-h} + 10vh);
+    padding-bottom: $divider-h;
+    margin-bottom : -$divider-h;
+
+
+    .bieren-tilt-gallery {
+        .bottle-tilt-bottle {
+            cursor  : pointer;
+            position: relative;
+
+            .bubbles {
+                position            : absolute;
+                left                : 0;
+                right               : 0;
+                top                 : 0;
+                bottom              : 0;
+                width               : 100%;
+                height              : 100%;
+                // background       : rgba(red, 1);
+                -webkit-mask-size   : cover;
+                mask-size           : cover;
+
+                .bubbles-container {
+                    position            : absolute;
+                    left                : 0;
+                    right               : 0;
+                    top                 : 0;
+                    bottom              : 0;
+                    width               : 100%;
+                    height              : 100%;
+                    // background       : rgba(red, 1);
+                    transform           : rotate(-7deg);
+                }
+            }
+        }
+
+        .slide-wrap,
+        .bier-item {
+            height: 100%;
+        }
+
+        .bier-item {
+            visibility    : hidden;
+            display       : flex;
+            align-items   : flex-start;
+            padding-bottom: 20%;
+            width         : auto !important;
+            padding-left  : 15em;
+            padding-top   : 3em;
+
+            .title {
+                font-size: 3.2vw;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        .tns-item {
+            height    : 800px;
+            transition: width .5s ease-in-out;
+            width     : 15vw !important;
+
+            &.next-slide,
+            &.prev-slide {
+                width: 16.5vw !important;
+            }
+
+            &.active-slide {
+                width: 37vw !important;
+            }
+        }
+
+        .bottle-tilt-bottle {
+            position: absolute;
+        }
+
+        .bottle-tilt-bottle,
+        .bottle-tilt-image {
+            top       : 95px;
+            height    : 520px;
+            min-width : 156px;
+            transition: height .4s ease-in-out, top .4s ease-in-out;
+        }
+
+        .next-slide,
+        .prev-slide {
+
+            .bottle-tilt-bottle,
+            .bottle-tilt-image {
+                top       : 60px;
+                height    : 600px;
+                min-width : 181px;
+                transition: height .4s ease-in-out, top .4s ease-in-out;
+
+            }
+        }
+
+        .active-slide {
+            .bier-item {
+                visibility: visible;
+            }
+
+            .bottle-tilt-bottle,
+            .bottle-tilt-image {
+                top       : 0px;
+                height    : 750px;
+                transition: height .4s ease-in-out, top .4s ease-in-out;
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+    }
+
+    .sing-box {
+        height          : 150px;
+        width           : 150px;
+        overflow        : hidden;
+        position        : relative;
+        background-color: lightskyblue;
+        border-radius   : 15px;
+        box-shadow      : 15px 15px 0 rgba(0, 0, 0, $shadow-opacity);
+        margin-bottom   : 1em;
+
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+
+        .title {
+            padding-left : 50px;
+            font-size    : 30px !important;
+            color        : rgba(black, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .bottle-image {
+            position : absolute;
+            height   : 375px;
+            max-width: none;
+            left     : -37.5px;
+            bottom   : -50px;
+        }
+
+        .url {
+            position : absolute;
+            font-size: 5px;
+            bottom   : 3px;
+            right    : 10px;
+            color    : rgba(black, 0.2);
+        }
+
+        .spotify-logo {
+            width   : 15px;
+            height  : 15px;
+            position: absolute;
+            right   : 10px;
+            top     : 10px;
+            opacity : .5;
+        }
+
+
+    }
+
+    .tns-outer {
+        position: relative;
+        z-index : 50;
+    }
+
+    .bieren-base {
+        height: 350px !important;
+
+        margin          : 0;
+        padding         : 0;
+        background-color: $kuning;
+        z-index         : 10;
+        position        : relative;
+        margin-top      : -150px;
+    }
+}
+
+#news {
+    padding-top     : $divider-h;
+    background-color: $merah;
+
+    >.container {
+        @media screen and (min-width: $tablet) {
+            max-width: 60vw;
+        }
+
+        display       : flex;
+        flex-direction: column;
+        z-index       : 100;
+
+
+    }
+
+    #news-control {
+        display   : flex;
+        align-self: center;
+
+        .prev {
+            transform: rotate(180deg);
+
+            &:hover {
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+
+        .next {
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+
+        .next,
+        .prev {
+            width     : 60px;
+            height    : 50px;
+            margin    : 0 2em;
+            cursor    : pointer;
+            transition: all .2s ease-in-out;
+        }
+    }
+
+    .news-box {
+        @include p-box;
+
+        * {
+            color: white;
+        }
+    }
+
+    @media screen and (max-width: $tablet) {
+        .news-box {
+            &__thumbnail{
+                transform: scale(.8);
+                transform-origin: left;
+            }
+            &__info {
+                padding: 0px 60px 0px;
+            }
+            &__title{
+                font-size: 3.5em;
+                line-height: .9;
+            }
+        }
+    }
+}
+
+.mobile-slider{
+    margin-top: -5vh;
+    // padding-bottom: 10vh;
+    z-index: 100;
+    .slick-dots{
+        z-index: 10;
+    }
+    .slide-wrap{
+        display: flex;
+        align-items: flex-end;
+        padding: 0 1rem;
+    }
+    .bottle-wrap{
+        .bottle-tilt-bottle{
+            $b-height: 500px; 
+            height: $b-height;
+            width: $b-height*3/10;
+            transform: rotate(5deg) translateX(-.5rem);
+        }
+    }
+    .bier-item{
+        padding: 0 2vw;
+        .title{
+            font-size: 8.5vw;
+            letter-spacing: -2px;
+            margin-bottom: 2rem;
+        }
+        .subtitle{
+            font-size: 1rem;
+            line-height: 1.25;
+        }
+    }
+}
+
+@media screen and (max-width: $tablet) {
+    #bottles .bieren-base{
+        height: 350px !important;
+        margin-top: -180px;
+        padding-bottom: 450px;
+    }
+}

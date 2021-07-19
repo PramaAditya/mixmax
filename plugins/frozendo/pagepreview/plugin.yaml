@@ -1,0 +1,6 @@
+plugin:
+    name: 'frozendo.pagepreview::lang.plugin.name'
+    description: 'frozendo.pagepreview::lang.plugin.description'
+    author: Frozendo
+    icon: oc-icon-eye
+    homepage: 'http://frozen.do'

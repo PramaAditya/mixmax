@@ -1,0 +1,10 @@
+name: Flavors
+form: $/balkat/mixmax/models/flavor/fields.yaml
+modelClass: Balkat\Mixmax\Models\Flavor
+defaultRedirect: balkat/mixmax/flavors
+create:
+    redirect: 'balkat/mixmax/flavors/update/:id'
+    redirectClose: balkat/mixmax/flavors
+update:
+    redirect: balkat/mixmax/flavors
+    redirectClose: balkat/mixmax/flavors

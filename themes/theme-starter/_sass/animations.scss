@@ -1,0 +1,36 @@
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(30px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+@keyframes floatRotate {
+	0% {
+		transform: translatey(0px) rotate(5deg);
+	}
+	50% {
+		transform: translatey(-30px) rotate(5deg);
+	}
+	100% {
+		transform: translatey(0px) rotate(5deg);
+	}
+}
+
+@keyframes rotateIdle{
+	0% {
+		transform: rotate(-7deg);
+	}
+	50% {
+		transform: rotate(-2deg);
+	}
+	100% {
+		transform: rotate(-7deg);
+	}
+}
+

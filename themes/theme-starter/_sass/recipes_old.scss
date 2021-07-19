@@ -1,0 +1,108 @@
+
+#recipes {
+    padding: $divider-h 0 0;
+    .placeholder {
+        margin-top: 5em;
+        width     : 100vw;
+    }
+
+    .slider-container {
+        position  : relative;
+        margin-top: 2em;
+
+        .prev {
+            position           : absolute;
+            z-index            : 100;
+            top                : 0;
+            bottom             : 0;
+            left               : 0;
+            width              : 20vw;
+            // background-color: red;
+            cursor             : pointer;
+        }
+
+        .next {
+            position           : absolute;
+            z-index            : 100;
+            top                : 0;
+            bottom             : 0;
+            right              : 0;
+            width              : 20vw;
+            // background-color: red;
+            cursor             : pointer;
+        }
+    }
+
+    .recipes-slider {
+        // display: flex;
+        position: relative;
+
+        .recipe {
+            
+            margin       : 1em;
+            border-radius: 40px;
+            overflow     : hidden;
+            display      : flex;
+            align-items  : center;
+
+            .recipe-img {
+                border-radius: 40px;
+                @extend .image;
+                height             : 40vw;
+                width              : 25vw;
+                background-size    : cover;
+                background-position: center center;
+                display            : flex;
+                align-items        : center;
+                justify-content    : center;
+
+                .play-button {
+                    width  : 100px;
+                    opacity: 0;
+                }
+
+                cursor: pointer;
+            }
+
+            .recipe-detail {
+                // display: none;
+                overflow   : hidden;
+                width      : 0vw;
+                height     : 40vw;
+                margin-left: -40px;
+
+                border-top-right-radius   : 40px;
+                border-bottom-right-radius: 40px;
+                justify-content           : center;
+                background-color          : white;
+
+                .title {
+                    font-size: 3rem;
+                }
+            }
+        }
+
+        .recipe.slick-center {
+            width: calc(60vw - 40px);
+
+            .recipe-detail {
+                display                      : flex;
+                flex-direction               : column;
+                width                        : 35vw;
+                padding-left                 : 80px;
+                padding-right: 40px;
+                // transition                : all .2s ease-in;
+
+            }
+
+            .recipe-img {
+                .play-button {
+                    opacity   : 1;
+                    transition: all .5s ease-in;
+                }
+            }
+
+        }
+    }
+
+}

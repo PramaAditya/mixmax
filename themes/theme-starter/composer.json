@@ -1,0 +1,8 @@
+{
+    "name": "balkat/bulma-starter-theme",
+    "type": "october-theme",
+    "description": "Mixmax theme by Balkat",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

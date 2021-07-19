@@ -1,0 +1,86 @@
+url = "/buy"
+layout = "mixmax-full"
+title = "Store Locator"
+is_hidden = 0
+
+[Agent]
+==
+
+<div class="section buy-section">
+    <div class="container is-fluid">
+        <div class="columns is-multiline">
+            <div class="column is-full">
+                <h1 class="page-title">
+                    Find your MixMax
+                </h1>
+            </div>
+            <div class="column is-half online">
+                <h1 class="title">
+                    Online
+                </h1>
+                <img src="{{'assets/images/kawanminum.png' | theme }}" class="kawanminum" alt="">
+                <div class="buy-links">
+                    <a href="{{this.theme.shopee}}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{'assets/images/shopee.png' | theme }}" alt="">
+                    </a>
+                    <a href="{{this.theme.tokopedia}}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{'assets/images/tokopedia.png' | theme }}" alt="">
+                    </a>
+                    <a href="{{this.theme.bukalapak}}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{'assets/images/bukalapak.png' | theme }}" alt="">
+                    </a>
+                    <a href="{{this.theme.blibli}}" target="_blank" rel="noopener noreferrer">
+                        <img src="{{'assets/images/blibli.png' | theme }}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="column is-half offline">
+                <h1 class="title">
+                {% if Agent.isDesktop() %}
+                    Bar/Restaurant/Cafe
+                {% else %}
+                    Bar <br>
+                    Restaurant <br>
+                    Cafe
+                {% endif %}
+                </h1>
+                <a href="{{'location' | page}}" class="button is-huge">
+                    Search
+                </a>
+                <div class="is-full available">
+                <span>Also available:&nbsp;</span>
+                
+                <div class="stores">
+                    <div class="store">
+                        <img src="{{'assets/images/available/lotte.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/harihari.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/aeon.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/farmers-market.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="flex-break"></div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/vinyard.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/transmart.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/ranch-market.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/grand-lucky.png' | theme}}" alt="" class="image">
+                    </div>
+                </div>
+                
+            </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

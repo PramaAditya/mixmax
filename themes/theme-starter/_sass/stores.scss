@@ -1,0 +1,152 @@
+
+#stores {
+    background-color: #F2F2F2;
+    min-height      : 100vh;
+
+    .main {
+        // padding: 0;
+
+    }
+
+    button.btn{
+        padding: 30px 30px 40px 25px!important;
+        margin-top: -10px;
+        cursor: pointer;
+    }
+
+    input,
+    select {
+        font-size: 1.1em !important;
+    }
+
+    .bh-sl-container {
+        margin: 0;
+        padding: 0;
+        padding-bottom: 10px;
+    }
+    .bh-sl-filters-container {
+        margin: 0;
+    }
+
+    .list-title {
+        @extend .title;
+        font-size       : 5em !important;
+        display         : flex;
+        align-items     : center;
+        padding-left    : 20px;
+        height          : 100px;
+        color           : #3DB58B;
+        background-color: #F2F2F2;
+        width           : 100%;
+        position        : absolute;
+    }
+
+    .bh-sl-loc-list {
+        overflow-x: hidden;
+    }
+
+    .list {
+        margin-top      : 100px;
+        background-color: rgba(0, 0, 0, 0) !important;
+        border-radius   : 0;
+        box-shadow      : none;
+
+        li {
+            background-color: rgba(0, 0, 0, 0) !important;
+            border          : 0 !important;
+            border-bottom   : solid 3px black !important;
+        }
+    }
+
+    .list-label {
+        margin-top: 15px;
+    }
+
+    .list-content {
+        * {
+            color: black;
+        }
+    }
+
+    .loc-name {
+        font-family  : $family-sans-serif !important;
+        color        : #DA3611 !important;
+        font-weight  : bold;
+        font-size    : 2em;
+        margin-bottom: 5px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        .bh-sl-map {
+            width: 60%;
+        }
+
+        .bh-sl-loc-list {
+            width: 40%;
+
+            .list-title,
+            .list {
+                padding-left: 60px;
+            }
+        }
+    }
+    .also-available{
+        .stores{
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+    }
+    
+    @media screen and (max-width: $tablet) {
+        .main{
+            padding-top: 0;
+        }
+        .title{
+            color: $hijau;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: -1rem;
+            margin-bottom: 3rem;
+        }
+        input, select{
+            font-size: 1.5rem !important;
+        }
+        button.btn{
+            margin: 40px 0 0!important;
+        }
+        ul#list{
+            margin-top: 10px!important;
+        }
+        .bh-sl-csontainer{
+            margin-bottom: 20px;
+        }
+        .also-available{
+           margin-top: 10px;
+           text-align: center;
+           font-weight: bold;
+           .stores{
+               justify-content: center;
+           }
+        }
+    }
+    
+}
+
+.gm-style-iw{
+    a{
+        background: red;
+        position: absolute;
+        z-index: 90;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    button{
+        z-index: 100;
+    }
+}
+
+

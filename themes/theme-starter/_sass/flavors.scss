@@ -1,0 +1,348 @@
+@import "_mixins";
+
+#placeholder-divider {
+    z-index   : 100;
+    margin-top: -420px;
+    position  : relative;
+    padding   : 0px;
+    height    : 100%;
+
+    .svg-container {
+        height: 200px;
+    }
+
+    .divider-w-text {
+        transform: scale(1.05);
+        width    : 100vw;
+
+        .text {
+            transform  : translate3d(0, 2vw, 0);
+            width      : 100%;
+            fill       : white !important;
+            font-family: 'Cooper';
+            font-size  : 1.58vw;
+        }
+    }
+
+    @media screen and (max-width: $tablet) {
+        margin-top: 0;
+        margin-bottom: -50px;
+        position: relative;
+        z-index: 0;
+        .text{
+            transform  : translate3d(0, 1.25em, 0) !important;
+            font-size: 2em!important;
+        }
+    }
+
+}
+
+#mobile-select{
+    display: flex;
+    margin-top: -50px;
+    padding: 0 10vw 50px;
+    align-items: center;
+    justify-content: space-between;
+    .prev{
+        transform: rotate(180deg);
+    }
+    .next,.prev{
+        width: 40px;
+    }
+    .flavor-bottle{
+        img{
+            max-height: 60vh;
+            margin-bottom: 20px;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dots{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .dot{
+            height: 10px;
+            width: 10px;
+            background: black;
+            margin: 0 4px;
+            border: 2px solid black;
+            border-radius: 100px;
+            &.active{
+                background: transparent;
+            }
+        }
+    }
+
+        
+
+}
+
+#flavors,
+#flavor {
+    @media screen and (max-width: $tablet) {
+        background:#E4E4E4 ;
+    }
+    #flavor-container {
+
+        h1,
+        p {
+            color        : white;
+            margin-bottom: .1em;
+        }
+    }
+
+    #select {
+        .toScroll {
+            animation: scrollItem 10s infinite linear;
+        }
+    }
+
+
+
+}
+
+#flavor-select {
+    padding-top  : 10em;
+    margin-bottom: -100px;
+
+    .bottle-flavor {
+        transition: transform .5s ease-in-out;
+
+        &:not(.active):hover {
+            transform: translateY(-50px);
+        }
+
+        &.active {
+            margin-top: -120px;
+        }
+
+        .image {
+            @include shadow;
+        }
+    }
+}
+
+#spotify-playlist {
+    .spotify-album {
+        @include p-box;
+
+        &__title,
+        &__excerpt {
+            margin-bottom: 2rem !important;
+            // color: white;
+            p{
+                margin-bottom: 1.25rem !important;
+            }
+        }
+
+    }
+
+    .spotify-screenshot {
+        position: relative;
+        z-index : 60;
+
+        .screenshot {
+            img {
+                margin: 5em 0;
+            }
+        }
+
+
+    }
+
+    .spotify-embed {
+        border-radius   : 10px;
+        overflow        : hidden;
+        padding-bottom  : 3px;
+        background-color: #190609;
+        margin          : 5em 0;
+        box-shadow      : 20px 20px 0px rgba(0, 0, 0, $shadow-opacity);
+        transform       : rotate(2deg);
+
+        iframe {
+            width     : 100%;
+            min-height: 500px;
+        }
+    }
+
+    &::after {
+        bottom: -150px;
+    }
+    @media screen and (max-width: $tablet) {
+        padding: 0px 10vw !important;
+        .spotify-album{
+            &__thumbnail{
+                margin-top: -60px;
+                transform: scale(.8)!important;
+            }
+            &__title{
+                font-size: 3em;
+            }
+            &__excerpt{
+                font-size: 1.25em;
+            }
+            #spotify_url_1 img{
+                margin-left: -10px;
+            }
+            padding-bottom: 10px;
+        }
+        .spotify-embed{
+            margin-top: 0px;
+            transform: rotate(0);
+        }
+    }
+}
+
+#flavor-detail {
+    position: relative;
+
+    .container {
+        z-index: 60;
+    }
+
+    padding: 10em 0 8em;
+
+    .flavor-image {
+        @include box(150px, 0deg);
+        margin-right : 2em;
+        margin-bottom: 2em;
+    }
+
+    .big-bottle {
+
+        // animation: float infinite 10s;
+        img {
+            position: absolute;
+            height  : 1500px;
+            @include big-shadow(1500px);
+            z-index  : 100;
+            transform: rotate(-5deg);
+            right    : 15%;
+            bottom   : 80px;
+            animation: rotateIdle infinite 10s;
+        }
+    }
+
+    @media screen and (max-width: $tablet) {
+        min-height: 100vh;
+        .container{
+            padding: 0 10vw;
+        }
+        .is-half{
+            padding: 20vh 0;
+        }
+        .flavor-image{
+            height: 18vw;
+            width: 18vw;
+            margin: 0;
+            margin-right: 10px;
+            box-shadow: 8px 8px 0 rgba(0,0,0,.1) !important;
+        }
+        .title{
+            margin-top: 20px;
+            margin-bottom: 10px!important;
+        }
+        .big-bottle{
+            img{
+                height: 90vh;
+                min-width: calc(90vh / 3.31);
+                margin-right: -20vw;
+                top: -250px;
+            }
+        }
+        .button{
+            font-size: 1em;
+            margin-top: 20px ;
+        }
+    }
+
+}
+
+#instagram-filter {
+    // height: 1500px;
+    padding-top: 10em;
+
+    .scroller {
+        z-index: 10;
+    }
+
+    .scroller__container {
+        align-items: flex-start;
+        padding-top: 5em;
+    }
+    .image-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .images {
+        height      : 1000px;
+        margin-right: -240px;
+    }
+
+    .info {
+        position      : relative;
+        z-index       : 40;
+        padding-bottom: 1em;
+        
+        .description{
+            margin: auto;
+            max-width: 400px;
+        }
+    }
+    @media screen and (max-width: $tablet) {
+        padding-top: 0;
+        .images{
+            height: 500px;
+            min-width: calc(500px / 77);
+            margin-right: -120px;
+            margin-bottom: 80px;
+            
+        }
+        .floater{
+            height: 120px;
+            width: 120px;
+        }
+        .floaters__container{
+            min-height: 70vh;
+        }
+        .info{
+            .title{
+                margin: -10px 0 10px !important;
+            }
+            padding: 0 8vw;
+            .button{
+                font-size: 1em;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+
+#to-top{
+    padding-top: 3em;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    color: black;
+    position: relative;
+    z-index: 100;
+}
+
+
+.ice {
+    #spotify-playlist {
+        background-color: #BEC21C;
+    }
+
+    #flavor-detail {
+        background-color: #A7A958;
+    }
+
+    #instagram-filter {
+        background-color: #D9DC52;
+    }
+}

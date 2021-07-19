@@ -1,0 +1,8 @@
+fields:
+    api_key:
+        label: sunlab.unsplashpicker::lang.settings.fields.api_key.label
+        span: left
+
+    api_secret:
+        label: sunlab.unsplashpicker::lang.settings.fields.api_secret.label
+        span: right

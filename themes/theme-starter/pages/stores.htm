@@ -1,0 +1,263 @@
+url = "/stores"
+layout = "mixmax-full"
+title = "Store Locator - Before"
+is_hidden = 0
+
+==
+
+
+
+
+{% put styles %}
+<link rel="stylesheet" type="text/css" href="{{'assets/jStore/assets/css/storelocator.css' | theme}}" />
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+{% endput %}
+
+
+<section class="section main">
+    <div class="container">
+        <div class="bh-sl-container">
+            <div class="store-form-container">
+                <form id="bh-sl-user-location" method="post" action="#">
+                    <div class="columns">
+                        <div class="field column is-4">
+                            <h1 class="title m">
+                                Let's Find
+                            </h1>
+                            <div class="address-input control has-icons-right">
+                                <input type="text" id="bh-sl-address" name="bh-sl-address" value=""
+                                    onFocus="geolocate()" />
+                                <span class="icon is-medium is-right" id="locate-me">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field column is-2">
+                            <div class="control">
+                                <div class="bh-sl-filters-container">
+
+
+                                    <div id="category-filter" class="bh-sl-filters select">
+                                        <select name="category">
+                                            <option value="">All</option>
+                                            <option value="bar">Bar</option>
+                                            <option value="cafe">Cafe</option>
+                                            <option value="restaurant">Restaurant</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field column">
+                            <button class="btn" type="submit">Search</button>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                </form>
+
+            </div>
+
+            <div id="bh-sl-map-container" class="bh-sl-map-container">
+                <div id="bh-sl-map" class="bh-sl-map"></div>
+                <div class="bh-sl-loc-list">
+                    <h1 class="list-title d">Let's Find</h1>
+                    <ul class="list"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="also-available">
+            <p>Also available:</p>
+            <div class="stores">
+                    <div class="store">
+                        <img src="{{'assets/images/available/lotte.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/harihari.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/aeon.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/farmers-market.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="flex-break"></div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/vinyard.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/transmart.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/ranch-market.png' | theme}}" alt="" class="image">
+                    </div>
+                    <div class="store">
+                        <img src="{{'assets/images/available/grand-lucky.png' | theme}}" alt="" class="image">
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+{% put scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{'assets/jStore/assets/js/libs/handlebars.min.js' | theme}}"></script>
+<script
+    src="https://maps.google.com/maps/api/js?key=AIzaSyAJbRkpfuppU7xshDQEINNzY4s0_12_xM8&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script
+    src="https://maps.google.com/maps/api/js?key=AIzaSyAJbRkpfuppU7xshDQEINNzY4s0_12_xM8&libraries=places&callback=initAutocomplete"></script>
+<script src="{{'assets/jStore/assets/js/plugins/storeLocator/jquery.storelocator.js' | theme}}"></script>
+
+<script>
+    var address = Cookies.get('address');
+    var category = Cookies.get('category');
+    $('#bh-sl-address').val(address);
+    $('#category-filter select').val(category);
+</script>
+
+<script>
+    $(function () {
+
+        $('#bh-sl-map-container').storeLocator({
+            // autoGeocode: true,
+            dataType: 'json',
+            dataLocation: '{{"assets/jStore/data/dummy.json" | theme}}',
+            fullMapStart: true,
+            distanceAlert: -1,
+            fullMapStartListLimit: 10,
+            lengthUnit: 'km',
+            openNearest: true,
+            formContainer: 'store-form-container',
+            taxonomyFilters: {
+                'category': 'category-filter',
+            },
+            listTemplatePath: "{{'assets/jStore/assets/js/plugins/storeLocator/templates/location-list-description.html'	| theme}}",
+            infowindowTemplatePath: "{{'assets/jStore/assets/js/plugins/storeLocator/templates/infowindow-description.html' | theme}}",
+        });
+    });
+
+    jQuery(document).ready(function ($) {
+
+        $('#locate-me').on('click', function (e) {
+            e.preventDefault();
+
+            $('#bh-sl-address').val('');
+
+            /* Chrome need SSL! */
+            var is_chrome = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
+            var is_ssl = 'https:' == document.location.protocol;
+            if (is_chrome && !is_ssl) {
+                return false;
+            }
+
+            /* HTML5 Geolocation */
+            navigator.geolocation.getCurrentPosition(
+                function (position) { // success cb
+                    $('#bh-sl-address').val('Loading...');
+                    /* Current Coordinate */
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+                    var google_map_pos = new google.maps.LatLng(lat, lng);
+
+                    /* Use Geocoder to get address */
+                    var google_maps_geocoder = new google.maps.Geocoder();
+                    google_maps_geocoder.geocode(
+                        { 'latLng': google_map_pos },
+                        function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK && results[0]) {
+                                console.log(results[0].formatted_address);
+                                $('#bh-sl-address').val(results[0].formatted_address);
+
+                            }
+                        }
+                    );
+                },
+                function () { // fail cb
+                    alert('Address lookup failed');
+                    $('#bh-sl-address').val('');
+                }
+            );
+            $('#bh-sl-user-location').submit();
+        });
+
+
+    });
+
+
+    // $(document).ready(function () {
+    //     $('#category-filter select').val('').change();
+    // });
+</script>
+
+<script>
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+    /** @type {!HTMLInputElement} */(document.getElementById('bh-sl-address')),
+            { types: ['geocode'] });
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+
+{% endput %}

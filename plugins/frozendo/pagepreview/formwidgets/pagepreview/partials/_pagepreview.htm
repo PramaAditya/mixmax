@@ -1,0 +1,52 @@
+<div
+    class="control-popup modal fade frozendo-pagepreview"
+    data-control="pagepreview"
+    data-replace-preview-button="<?= $replacePreviewButton ? 'true' : 'false' ?>"
+    data-button-text="<?= e(trans('cms::lang.editor.preview')) ?>"
+    data-url="<?= $pagePreviewUrl ?>"
+    data-loading-label="<?= e(trans('frozendo.pagepreview::lang.formwidget.loading')) ?>"
+    id="<?= $this->getId() ?>"
+    role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" data-control="toolbar">
+                    <a href="<?= $iconLink ?>" target="_blank">
+                        <img src="<?= $iconSrc ?>"
+                             alt="<?= e(trans('frozendo.pagepreview::lang.plugin.name')) ?>">
+                    </a>
+                    <div class="btn-group" role="group">
+                        <button
+                            type="button" class="btn btn-primary empty oc-icon-check"
+                            title="<?= e(trans('backend::lang.form.save')) ?>"
+                            data-request="onSave"
+                            data-dismiss="modal"
+                            data-control="tooltip"
+                            data-placement="bottom"
+                            data-container="body">
+                        </button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button
+                            type="button" class="btn btn-default empty oc-icon-cog"
+                            data-inspectable
+                            data-inspector-title="<?= e(trans('frozendo.pagepreview::lang.formwidget.inspector.title')) ?>"
+                            data-inspector-description="<?= e(trans('frozendo.pagepreview::lang.formwidget.inspector.description')) ?>">
+                                <input data-inspector-config type="hidden" value="<?= $inspectorConfig ?>">
+                                <input data-inspector-values type="hidden" value="<?= $inspectorValues ?>" name="FrozendoPagePreviewSettings">
+                        </button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default empty oc-icon-mobile-phone frozendo-pagepreview-switch" data-width="400px"></button>
+                        <button type="button" class="btn btn-default empty oc-icon-tablet frozendo-pagepreview-switch" data-width="800px"></button>
+                        <button type="button" class="btn btn-default empty oc-icon-laptop frozendo-pagepreview-switch" data-width="1200px"></button>
+                        <button type="button" class="btn btn-default empty oc-icon-desktop frozendo-pagepreview-switch" data-width="1600px"></button>
+                        <button type="button" class="btn btn-default empty oc-icon-expand frozendo-pagepreview-switch active" data-width="90%"></button>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <iframe name="<?= $this->getId('iframe') ?>"></iframe>
+                </div>
+            </div>
+        </div>
+</div>

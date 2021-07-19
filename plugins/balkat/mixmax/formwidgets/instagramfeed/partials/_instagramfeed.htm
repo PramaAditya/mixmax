@@ -1,0 +1,24 @@
+<br>
+<div class="container">
+    <h1 class="widget-title" > Pilih 6 foto untuk ditampilkan di halaman Home</h1>
+    <div class="scroll-cont">
+        <select name="<?= $name ?>" class="image-picker show-html" data-limit="6" multiple="multiple">
+
+            <?php foreach ($imagePaths as $ig): ?>
+            <option value="<?= $ig ; ?>" data-img-src='<?= $ig ; ?>' 
+            <?php  if (is_array($value)):  ?>
+                <?php if (in_array($ig, $value)): ?> 
+                    selected
+                <?php endif; ?>
+            <?php endif; ?>
+                
+            ></option>
+
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+</div>
+<script>
+    $("select").imagepicker({ limit_reached: function () { alert('Maksimal 6 Post Instagram') } })
+</script>

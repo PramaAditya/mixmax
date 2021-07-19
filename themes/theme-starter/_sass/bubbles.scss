@@ -1,0 +1,99 @@
+
+.active-slide{
+    .bubble {
+        width: 6.5px;
+        height: 6.5px;
+        border-radius: 200px;
+        position: absolute;
+        background: rgba(white,.2);
+        box-shadow: -(10px/20) (20px/20) (30px/20) rgba(0, 0, 0, 0.2), inset 0px (10px/20) (30px/20) (5px/20) rgba(255, 255, 255, 1);
+    }
+    .contoh{
+        right: 50%;
+        transform: scale(2);
+        bottom: 50%;
+    }
+    
+    .x1 {
+        right: 40%;
+        transform: scale(0.9);
+        opacity: 0.2;
+        animation: moveclouds 5s linear infinite, sideWays 4s ease-in-out infinite alternate;
+    }
+    
+    .x2 {
+        right: 45%;
+        transform: scale(0.6);
+        opacity: 0.5;
+        animation: moveclouds 8s linear infinite, sideWays 5s ease-in-out infinite alternate;
+    }
+    .x3 {
+        right: 60%;
+        transform: scale(0.8);
+        opacity: 0.3;
+        animation: moveclouds 3s linear infinite, sideWays 4s ease-in-out infinite alternate;
+    }
+    .x4 {
+        right: 75%;
+        transform: scale(0.75);
+        opacity: 0.35;
+        animation: moveclouds 7s linear infinite, sideWays 2s ease-in-out infinite alternate;
+    }
+    .x5 {
+        right: 80%;
+        transform: scale(0.8);
+        opacity: 0.3; 
+        animation: moveclouds 2s linear infinite, sideWays 1s ease-in-out infinite alternate;
+    }
+    .x6 {
+        right: 30%;
+        transform: scale(0.9);
+        opacity: 0.2;
+        animation: moveclouds 3.4s linear infinite, sideWays 4s ease-in-out infinite alternate;
+    }
+    
+    .x7 {
+        right: 25%;
+        transform: scale(0.6);
+        opacity: 0.5;
+        animation: moveclouds 4.2s linear infinite, sideWays 5s ease-in-out infinite alternate;
+    }
+    .x8 {
+        right: 56%;
+        transform: scale(0.8);
+        opacity: 0.3;
+        animation: moveclouds 2.1s linear infinite, sideWays 4s ease-in-out infinite alternate;
+    }
+    .x9 {
+        right: 27%;
+        transform: scale(0.75);
+        opacity: 0.35;
+        animation: moveclouds 5.2s linear infinite, sideWays 2s ease-in-out infinite alternate;
+    }
+    .x10 {
+        right: 71%;
+        transform: scale(0.8);
+        opacity: 0.3; 
+        animation: moveclouds 3.1s linear infinite, sideWays 1s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes moveclouds { 
+    0% { 
+        bottom: 46%;
+        // right: 20%
+    }
+    100% { 
+        bottom: 73%;
+        // right: 100%;
+    }
+}
+
+@keyframes sideWays { 
+    0% { 
+        margin-left:0px;
+    }
+    100% { 
+        margin-left:50px;
+    }
+}

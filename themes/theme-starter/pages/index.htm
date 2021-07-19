@@ -1,0 +1,245 @@
+url = "/"
+layout = "mixmax"
+title = "Home"
+is_hidden = 0
+
+[builderList bottleList]
+modelClass = "Balkat\Mixmax\Models\Flavor"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+
+[Agent]
+==
+{% set bottles = bottleList.records %}
+{% set photos = this.theme.ig_feed %}
+
+<section class="section page-header kuning" id="hero" data-color="kuning">
+    <div class="container">
+        <div class="columns">
+            <div class="column m">
+                <div class="hero-illust">
+                    <div class="images">
+                        <img src="{{'assets/images/shapes/hero.svg' | theme}}" alt="" class="shape-bg">
+                        <img src="{{'assets/images/bottles/amer-hero.png' | theme}}" alt="" class="bottle-img">
+                    </div>
+
+                </div>
+            </div>
+            <div class="column is-8">
+                <h1 class="title animate__animated animate__fadeInLeft">
+                    Find your true self
+                    inside our bottle
+                </h1>
+                <h2 class="subtitle animate__animated animate__fadeInLeft">
+                    Made from real fruits
+                </h2>
+                <a href="{{'buy' | page}}" class="button is-large">
+                    Shop MixMax
+                </a>
+            </div>
+            <div class="column d luxy-el" data-speed-y="7" data-offset="-50">
+                <div class="hero-illust">
+                    <!-- <img src="{{'assets/images/shapes/hero.svg' | theme}}" alt="" class="shape-bg">
+                    <img src="{{'assets/images/bottles/amer-hero.png' | theme}}" alt="" class="bottle-img"> -->
+                    <img class=" shape-bg" src="{{'assets/images/shapes/hero.svg' | theme}}" alt="{{flavor_name}}">
+                    <img class=" bottle-img" src="{{'assets/images/bottles/amer-hero.png' | theme}}" alt="{{flavor_name}}">
+
+                </div>
+            </div>
+        </div>
+        <div id="start-scroll"></div>
+    </div>
+</section>
+<section class="section full-width merah divide is-1 top bottom" data-color="merah" id="unique">
+
+</section>
+
+<section class="animate__animated animate__fade section full-width bieren-tilt-gallery-wrap" id="bottles">
+    <ul class="
+    {% if Agent.isDesktop() %}
+        bieren-tilt-gallery
+    {% else %}
+        mobile-slider
+    {% endif %}
+    ">
+        {% for flavor in bottles %}
+        <li data-slide="{{loop.index0}}">
+            <div class="slide-wrap">
+                <div class="bottle-wrap">
+                    <div class="bottle-tilt">
+                        <div class="bottle-tilt-bottle">
+                            <div class="bubbles" style="
+                                -webkit-mask-image: url({{flavor.image | media }});
+                                mask-image: url({{flavor.image | media }});
+                            ">
+                                <div class="bubbles-container">
+                                    <div class="bubble x1"></div>
+                                    <div class="bubble x2"></div>
+                                    <div class="bubble x3"></div>
+                                    <div class="bubble x4"></div>
+                                    <div class="bubble x5"></div>
+                                    <div class="bubble x6"></div>
+                                    <div class="bubble x7"></div>
+                                    <div class="bubble x8"></div>
+                                    <div class="bubble x9"></div>
+                                    <div class="bubble x10"></div>
+                                </div>
+
+                            </div>
+                            <img data-expand="400" class="lazyload bottle-tilt-image"
+                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                data-src="{{flavor.image | media }}" alt="{{flavor.name | raw}}">
+                            <div class="bottle-tilt-lijn-wrap">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="bier-item">
+                    <div class="desc-wrap">
+                        <h2 class="anim-me title">{{flavor.name | raw}}</h2>
+                        <div class="anim-me subtitle">{{flavor.description | raw}}</div>
+                        <div class="anim-me">
+                            <a href="{{flavor.spotify_url}}">
+                                <img data-expand="400" class="lazyload spotify-cover"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                    data-src="{{flavor.spotify_cover | media }}" alt="{{flavor_name}}"
+                                    style="background-color:{{flavor.color_1}}">
+                                <!-- <img src="{{flavor.spotify_cover | media}}" alt="{{flavor_name}}" class="spotify-cover"> -->
+                            </a>
+                            {% set slug = flavor.slug %}
+                        </div>
+                        <a href="{{'flavor' | page({slug:slug})}}" class="button anim-me">Get Mixing</a>
+
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="bieren-base divide is-3 top">
+
+    </div>
+</section>
+
+{% if not (Agent.isDesktop()) %}
+{% put scripts %}
+<script>
+     $('.mobile-slider').slick({
+           infinite: true,
+            slidesToShow: 1,
+            speed: 1000,
+            easing: 'ease-in-out',
+            autoplay: true,
+            autoplaySpeed: 4000,
+            arrows: false,
+            dots: true,
+        });
+</script>
+{% endput %}
+{% endif %}
+<section class="section full-width hijau floaters divide top bottom is-2" data-color="hijau" id="truecolor">
+    <div class="scroller">
+        <div class="scroller__container">
+            <div class="toScroll">
+                {% for x in 1..2 %}
+                <div class="floaters__container">
+
+                    {% for photo in photos %}
+                    {% if loop.index is odd %}
+                    {% set pos = 'top' %}
+                    {% set y = (loop.index / 2)|round(0, 'ceil') %}
+                    {% else %}
+                    {% set pos = 'bottom' %}
+                    {% set y = (loop.index / 2)|round(0, 'ceil') %}
+                    {% endif %}
+                    <a href="{{this.theme.instagram}}" target="_blank">
+
+                        <div class="afloat {{pos}}-{{y}}" style="
+                            animation-duration: {{random(2,5)}}s;
+                        ">
+                            <div class="
+                            floater 
+                        " style="
+                            background-image: url('{{photo}}');
+                        ">
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <h1 class="title">
+        Show the world <br>
+        who you are
+    </h1>
+    {# <h2 class="hashtag">
+        #YOURTRUECOLOR
+    </h2> #}
+</section>
+<section class="section full-width divide bottom is-4 merah" data-color="merah" id="news">
+    <div class="container">
+        <div id="news-slider">
+            {% for x in 1..5%}
+            <div class="news-box">
+                <div class="columns">
+                    <div class="column is-5 news-box__thumbnail">
+                        <div class="thumbnail"
+                            style="background-image: url('{{'assets/images/floaters/home/1.jpg' | theme }}');">
+                        </div>
+                    </div>
+                    <div class="column news-box__info">
+                        <h1 class="news-box__title">
+                            Sound of
+                            the corner
+                        </h1>
+                        <p class="news-box__excerpt">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas repellendus deserunt
+                            perspiciatis
+                            libero sit soluta molestias dolore ad cumque amet delectus voluptas incidunt esse temporibus
+                            ipsam, ex tempore ut adipisci!
+                        </p>
+                        <a href="{{'article' | page}}" class="button">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="news-control">
+            <img src="{{'assets/images/arrow.svg' | theme}}" alt="Next" class="prev">
+            <img src="{{'assets/images/arrow.svg' | theme}}" alt="Next" class="next">
+        </div>
+    </div>
+</section>
+
+{% put scripts %}
+<script>
+    $(document).ready(function () {
+        var $sections = $('section.section');
+        var $window = $(window);
+        $window.scroll(function () {
+            $sections.each(function (index) {
+                var top = $(this).position().top;
+                var scrollPos = $window.scrollTop();
+                if (top - scrollPos <0 ){
+                    console.log($(this).attr('id'));
+                }
+                
+            });
+        });
+
+    });
+</script>
+{% endput %}

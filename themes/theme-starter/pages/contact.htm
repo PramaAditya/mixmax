@@ -1,0 +1,55 @@
+url = "/contact"
+layout = "mixmax"
+title = "Contact Us"
+is_hidden = 0
+
+[genericForm contact]
+messages_success = "Your form was successfully submitted"
+messages_errors = "There were errors with your submission"
+reset_form = 1
+inline_errors = "display"
+sanitize_data = "disabled"
+anonymize_ip = "disabled"
+recaptcha_theme = "light"
+recaptcha_type = "image"
+recaptcha_size = "normal"
+emails_date_format = "Y-m-d"
+==
+<section class="section full-width kuning divide is-2 bottom " id="contact-content">
+    <div class="container is-fluid">
+        <div class="head">
+            <h1 class="title">
+                Connect with us
+            </h1>
+            <p class="subtitle">
+                Stop on by. Drop us a line. Get in touch. Whether you're looking for a great excuse to go out on a
+                Tuesday night, or you're a distributor who wants to talk retail... We want to hear from you! Give us a
+                call or send us an email. We'll get right back to you.
+            </p>
+        </div>
+        <div class="forms">
+            {% component 'contact' %}
+        </div>
+        <div class="foot">
+            <div class="address subtitle">
+                <strong>Head Office:</strong><br>
+                Jl. Lingkar Luar Barat Kav. 35 - 36,<br>
+                Cengkareng, Jakarta Barat,<br>
+                11740, Indonesia.<br>
+            </div>
+            <div class="social-links">
+                <a href="{{ this.theme.facebook }}" target="_blank">
+                    <img src="{{'assets/images/facebook-icon.svg'|theme}}" alt="">
+                </a>
+                <a href="{{ this.theme.instagram }}" target="_blank">
+                    <img src="{{'assets/images/instagram-icon.svg'|theme}}" alt="">
+                </a>
+                <a href="{{ this.theme.spotify }}" target="_blank">
+                    <img src="{{'assets/images/spotify-icon.svg'|theme}}" alt="">
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>

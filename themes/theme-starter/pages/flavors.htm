@@ -1,0 +1,285 @@
+url = "/flavors"
+layout = "mixmax"
+title = "Flavors"
+is_hidden = 0
+
+[builderList bottleList]
+modelClass = "Balkat\Mixmax\Models\Flavor"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+{% set bottles = bottleList.records %}
+{% set photos = bottles[0].ig_photos %}
+
+{% put scripts%}
+<script>
+    $flavors = {};
+    {% for flavor in bottles %}
+        $flavors[{{flavor.id}}] =
+        {
+            "name":             "{{ flavor.name }}",
+            "description" :     "{{ flavor.description | raw}}",
+            "spotify_title" :   "{{ flavor.spotify_title }}",
+            "spotify_url" :     "{{ flavor.spotify_url }}",
+            "spotify_cover" :   "{{ flavor.spotify_cover }}",
+            "image" :           "{{ flavor.image }}",
+        };
+    {% endfor %}
+    $currFlavor = 1;
+
+    $('.bottle-flavor').click(function (e) {
+        $id = $(this).data('flavor');
+        // alert('clicked');
+        updateFlavorPage($id);
+
+    });
+
+    function updateFlavorPage(id, flavors = $flavors) {
+        $currFlavor = id;
+        console.log('Current Flavor ID is:' + $currFlavor);
+        flavor = $flavors[id];
+        console.log(flavor)
+    };
+</script>
+{% endput %}
+
+
+
+<section class="section full-width" id="select">
+    <!-- <div class="scroller">
+        <div class="scroller__container">
+            <div class="toScroll">
+                {% for x in 1..2 %}
+                <div class="svg-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 500" class="divider-w-text">
+                        <path id="curve-1" class="curve" fill="#000b76" fill-opacity="1"
+                            d="M0,240L80,272C160,304,320,368,480,344C640,320,800,208,960,176C1120,144,1280,192,1440,224C1600,256,1760,272,1920,288C2080,304,2240,320,2400,320C2560,320,2720,304,2880,272C3040,240,3200,192,3360,192C3520,192,3680,240,3840,280C4000,320,4160,352,4320,312C4480,272,4640,160,4800,112C4960,64,5120,80,5280,136C5440,192,5600,288,5760,272C5920,256,6080,128,6240,120C6400,112,6560,224,6720,256C6880,288,7040,240,7200,216C7360,192,7520,192,7680,200C7840,208,8000,224,8160,240C8320,256,8480,272,8640,248C8800,224,8960,160,9120,152C9280,144,9440,192,9600,208C9760,224,9920,208,10080,176C10240,144,10400,96,10560,88C10720,80,10880,112,11040,120C11200,128,11360,112,11440,104L11520,96L11520,480L11440,480C11360,480,11200,480,11040,480C10880,480,10720,480,10560,480C10400,480,10240,480,10080,480C9920,480,9760,480,9600,480C9440,480,9280,480,9120,480C8960,480,8800,480,8640,480C8480,480,8320,480,8160,480C8000,480,7840,480,7680,480C7520,480,7360,480,7200,480C7040,480,6880,480,6720,480C6560,480,6400,480,6240,480C6080,480,5920,480,5760,480C5600,480,5440,480,5280,480C5120,480,4960,480,4800,480C4640,480,4480,480,4320,480C4160,480,4000,480,3840,480C3680,480,3520,480,3360,480C3200,480,3040,480,2880,480C2720,480,2560,480,2400,480C2240,480,2080,480,1920,480C1760,480,1600,480,1440,480C1280,480,1120,480,960,480C800,480,640,480,480,480C320,480,160,480,80,480L0,480Z">
+                        </path>
+                        <text class="text" width="100%">
+                            <textPath side="left" alignment-baseline="bottom" xlink:href="#curve-1" startOffset="0px">
+                                {% for x in 1..2 %}
+                                Choose your color and then you can get a new experience!&nbsp;
+                                {% endfor %}
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+    </div> -->
+
+</section>
+<section class="section full-width" id="flavor-select">
+    <div class="container">
+        <div class="d columns luxy-el" data-speed-y="7" data-offset="-50">
+            {% for flavor in bottles%}
+            <div data-flavor="{{flavor.id}}" class="bottle-flavor column wow animate__fadeInUp
+            " data-wow-delay="{{ (loop.index0 * 1.5)/10}}s">
+                <img src="{{flavor.image | media}}" alt="{{flavor.name}}" class="image">
+
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="section full-width" id="placeholder-divider">
+    <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 160 1440 400" class="divider-w-text">
+            <path id="curve-1" class="curve" fill="#BEC21C" fill-opacity="1"
+                d="M0,240L80,272C160,304,320,368,480,344C640,320,800,208,960,176C1120,144,1280,192,1440,224C1600,256,1760,272,1920,288C2080,304,2240,320,2400,320C2560,320,2720,304,2880,272C3040,240,3200,192,3360,192C3520,192,3680,240,3840,280C4000,320,4160,352,4320,312C4480,272,4640,160,4800,112C4960,64,5120,80,5280,136C5440,192,5600,288,5760,272C5920,256,6080,128,6240,120C6400,112,6560,224,6720,256C6880,288,7040,240,7200,216C7360,192,7520,192,7680,200C7840,208,8000,224,8160,240C8320,256,8480,272,8640,248C8800,224,8960,160,9120,152C9280,144,9440,192,9600,208C9760,224,9920,208,10080,176C10240,144,10400,96,10560,88C10720,80,10880,112,11040,120C11200,128,11360,112,11440,104L11520,96L11520,480L11440,480C11360,480,11200,480,11040,480C10880,480,10720,480,10560,480C10400,480,10240,480,10080,480C9920,480,9760,480,9600,480C9440,480,9280,480,9120,480C8960,480,8800,480,8640,480C8480,480,8320,480,8160,480C8000,480,7840,480,7680,480C7520,480,7360,480,7200,480C7040,480,6880,480,6720,480C6560,480,6400,480,6240,480C6080,480,5920,480,5760,480C5600,480,5440,480,5280,480C5120,480,4960,480,4800,480C4640,480,4480,480,4320,480C4160,480,4000,480,3840,480C3680,480,3520,480,3360,480C3200,480,3040,480,2880,480C2720,480,2560,480,2400,480C2240,480,2080,480,1920,480C1760,480,1600,480,1440,480C1280,480,1120,480,960,480C800,480,640,480,480,480C320,480,160,480,80,480L0,480Z">
+            </path>
+            <text class="text" width="100%">
+                <textPath side="left" alignment-baseline="bottom" xlink:href="#curve-1" startOffset="0px">
+                    {% for x in 1..2 %}
+                    Choose your color and then you can get a new experience!&nbsp;
+                    {% endfor %}
+                </textPath>
+            </text>
+        </svg>
+    </div>
+</section>
+
+<div id="flavor-container" class="{{'ice'}}">
+    <section class="section full-width divide bottom is-5" id="spotify-playlist">
+        <div class="container">
+            <div class="columns spotify-album animate__animated animate__fadeIn">
+                <div class="column is-5 spotify-album__thumbnail luxy-el" data-speed-y="2" data-offset="0">
+                    <div id="spotify_cover" class="thumbnail"
+                        style="background-image: url('{{'assets/images/floaters/home/1.jpg' | theme}}');">
+                    </div>
+                </div>
+                <div class="column spotify-album__info">
+                    <h1 id="spotify_title" class="spotify-album__title">
+                        Yang Penting Hepi
+                    </h1>
+                    <p id="spotify_description" class="spotify-album__excerpt">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas repellendus deserunt
+                        perspiciatis
+                        libero sit soluta molestias dolore ad cumque amet delectus voluptas incidunt esse temporibus
+                        ipsam, ex tempore ut adipisci!
+                    </p>
+                    <a id="spotify_url_1" href="#" class="">
+                        <img src="{{'assets/images/spotify-btn.png' | theme}}" alt="" class="image">
+                    </a>
+                </div>
+            </div>
+            <div class="columns spotify-screenshot ">
+                <div class="column is-5 screenshot wow animate__fadeIn ">
+                    <!-- <img src="{{'assets/images/spotify-screenshot.png' | theme}}" alt="{{'Ice'}}" class="image"> -->
+                    <div class="luxy-el" data-speed-y="4" data-offset="-80">
+                        <div class="spotify-embed">
+                            <iframe src="https://open.spotify.com/embed/playlist/2HekhXQmh7FrfhLzq7OvqE" frameborder="0"
+                                allowtransparency="true" allow="encrypted-media"></iframe>
+                        </div>
+                    </div>
+
+                    <a id='spotify_url_2' href="#" class="button is-medium">
+                        Listen Now
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="section" id="flavor-detail">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="flavors-images">
+                        {% for x in 1..2%}
+                        <img src="{{('assets/images/flavor-'~ x ~'.jpg') | theme}}" alt="{{'Ice'}}"
+                            class="flavor-image wow animate__fadeInUp">
+                        {% endfor %}
+                    </div>
+                    <h1 id="name" class="title wow animate__fadeIn">
+                        {{'Ice Glacier'}}
+                    </h1>
+                    <p id="description" class="description wow animate__fadeIn">
+                        {{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.'}}
+                    </p>
+                    <a href="#" class="button is-medium wow animate__fadeIn">
+                        Shop MixMax
+                    </a>
+                </div>
+                <div class="column big-bottle luxy-el" data-speed-y="7" data-offset="-50">
+                    <img id="image" src="{{'assets/images/bottles/ice.png' | theme}}" alt="{{'Ice'}}" class="image">
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="section full-width hijau floaters divide top bottom is-6" id="instagram-filter">
+
+        <div class="has-text-centered">
+            <img src="{{'assets/images/filter-phone.png' | theme}}" alt="" class="images luxy-el" data-speed-y="7"
+                data-offset="-400">
+        </div>
+        <div class="info has-text-centered">
+
+            <h1 class="title">
+                Share your color
+            </h1>
+            <p class="description">
+                To complete the fun in choosing your color, we are also <br>
+                proud to present a special Instagram filter for those of you <br>
+                who want to find their color.
+            </p>
+            <a href="#" class="button is-medium">
+                Try it <img src="{{'assets/images/icon-ig.svg' | theme}}" alt="" class="button__icon">
+            </a>
+        </div>
+        <div class="scroller">
+            <div class="scroller__container">
+                <div class="toScroll">
+                    {% for x in 1..2 %}
+                    <div class="floaters__container">
+
+                        {% for photo in photos %}
+                        {% if loop.index is odd %}
+                        {% set pos = 'top' %}
+                        {% set y = (loop.index / 2)|round(0, 'ceil') %}
+                        {% else %}
+                        {% set pos = 'bottom' %}
+                        {% set y = (loop.index / 2)|round(0, 'ceil') %}
+                        {% endif %}
+                        <div class="afloat {{pos}}-{{y}}" style="
+                                animation-duration: {{random(2,5)}}s;
+                            ">
+                            <div class="
+                                floater 
+                            " style="
+                                background-image: url('{{photo.photo | media}}');
+                            ">
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+<section class="section full-width divide bottom is-6 kuning" id="recipes">
+    <div class="container has-text-centered">
+        <h1 class="title">
+            Magic Mix
+        </h1>
+        <h2 class="subtitle">
+            Lorem ipsum dolor sit amet, consectetur adipiscing.
+        </h2>
+    </div>
+    <!-- <div id="recipe-slider">
+        //{% for x in 1..5%}
+        <div class="recipe-box">
+            Test {{x}}
+        </div>
+        //{% endfor %}
+    </div> -->
+
+    <img src="{{'assets/images/placeholder.png' | theme}}" alt="" class="image placeholder">
+
+
+</section>
+
+{% put scripts %}
+<!-- <script>
+    var recipeSlider = tns({
+        container: '#recipe-slider',
+        items: 3,
+        slideBy: 1,
+        // slideBy: 'page',
+        center: true,
+        loop: true,
+        nav: false,
+        gutter: 100,
+        // controlsContainer: '#news-control',
+        mouseDrag: true,
+        arrowKeys: true,
+    });
+
+
+
+    var customizedFunction = function (info, eventName) {
+        $('#recipe-slider .tns-slide-active').eq(1).addClass('active');
+        console.log(info.event.type, info.container.id);
+    }
+
+    // bind function to event
+    recipeSlider.events.on('indexChanged', customizedFunction);
+
+    // remove function binding
+    recipeSlider.events.off('indexChanged', customizedFunction);
+</script> -->
+{% endput %}

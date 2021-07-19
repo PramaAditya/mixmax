@@ -1,0 +1,61 @@
+<nav class="level is-mobile nav is-active" id="navbar-scroll">
+	<div class="level-left animate__animated animate__fadeIn navbar-logo">
+		<a href="{{'index' | page}}">
+			<img src="{{'assets/images/logo.svg'|theme}}" alt="Affinity" class="">
+		</a>
+	</div>
+	<div class="level-right animate__animated animate__fadeIn">
+		<div class="level-item">
+			<a class="nav-burger" id="open-btn"></a>
+		</div>
+	</div>
+
+</nav>
+<div class="nav-spacer">
+
+</div>
+
+
+{% put scripts %}
+<script>
+	var burger = $("#open-btn");
+	var menu = $("#mega-menu");
+	var close = $("#close-btn");
+	var menus = $("#mega-menu .menu-item");
+	var logo = $("#mega-menu .logo");
+	burger.click(function () {
+		menu.toggleClass('is-active');
+		menus.toggleClass('animate__animated animate__fadeIn');
+		logo.toggleClass('animate__animated animate__fadeIn');
+		close.toggleClass('animate__animated animate__fadeIn');
+	});
+	close.click(function () {
+		menu.toggleClass('is-active');
+		menus.toggleClass('animate__animated animate__fadeIn');
+		logo.toggleClass('animate__animated animate__fadeIn');
+		close.toggleClass('animate__animated animate__fadeIn');
+	});
+</script>
+
+
+<script>
+	$(function () {
+		var lastScrollTop = 0,
+			delta = 5;
+		$(window).scroll(function () {
+			var nowScrollTop = $(this).scrollTop();
+			if (Math.abs(lastScrollTop - nowScrollTop) >= delta) {
+				if (nowScrollTop > lastScrollTop) {
+					$('#navbar-scroll').removeClass('is-active');
+					// console.log('Down');
+				} else {
+					$('#navbar-scroll').addClass('is-active');
+					// console.log('Up');
+				} lastScrollTop = nowScrollTop;
+			}
+		});
+	});
+</script>
+
+
+{% endput %}

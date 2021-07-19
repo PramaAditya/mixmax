@@ -1,0 +1,10 @@
+name: Store
+form: $/balkat/stores/models/store/fields.yaml
+modelClass: Balkat\Stores\Models\Store
+defaultRedirect: balkat/stores/store
+create:
+    redirect: 'balkat/stores/store/update/:id'
+    redirectClose: balkat/stores/store
+update:
+    redirect: balkat/stores/store
+    redirectClose: balkat/stores/store

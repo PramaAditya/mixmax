@@ -1,0 +1,19 @@
+columns:
+    id:
+        label: id
+        type: number
+        invisible: false
+    title:
+        label: title
+        type: text
+    subtitle:
+        label: subtitle
+        type: text
+    content:
+        label: content
+        type: text
+        invisible: true
+    image:
+        label: image
+        type: text
+        invisible: true

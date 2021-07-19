@@ -1,0 +1,126 @@
+url = "/location"
+layout = "mixmax-full"
+title = "Where you can buy Mixmax"
+is_hidden = 0
+
+==
+
+<section class="section" id="main">
+    <div class="container">
+        <div class="columns is-vcentered is-variable is-8">
+            <div class="column is-half forms">
+                <h1 class="title">
+                    Looking where to find
+                </h1>
+                <h2 class="subtitle">
+                    You can find at Bar/Restaurant/Cafe
+                </h2>
+                <div class="columns is-variable is-1">
+                    <div class="field column is-8">
+                        <div class="address-input control has-icons-right">
+                            <input type="text" id="bh-sl-address" name="bh-sl-address" value="" onFocus="geolocate()" />
+                            <span class="icon is-medium is-right" id="locate-me">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field column is-4">
+                        <div class="control">
+                            <div class="select">
+                                <select name="category" id="category-filter">
+                                    <option value="" selected>All</option>
+                                    <option value="bar">Bar</option>
+                                    <option value="restaurant">Restaurant</option>
+                                    <option value="cafe">Cafe</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a id="search" class="button is-large" href="{{'stores' | page}}">
+                    Search
+                </a>
+            </div>
+            <div class="column is-half image">
+                <img src="{{'assets/images/ensamble.png' | theme}}" alt="" class="image">
+            </div>
+        </div>
+    </div>
+</section>
+
+{% put scripts %}
+<script
+    src="https://maps.google.com/maps/api/js?key=AIzaSyAJbRkpfuppU7xshDQEINNzY4s0_12_xM8&libraries=places&callback=initAutocomplete"
+    async defer></script>
+
+<script>
+    $('#search').click(function () {
+        var address = $('#bh-sl-address').val();
+        var category = $('#category-filter').val();
+        Cookies.set('address', address);
+        Cookies.set('category', category);
+    });
+</script>
+
+<script>
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('bh-sl-address')),
+            { types: ['geocode'] });
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+{% endput %}

@@ -1,0 +1,46 @@
+@mixin shadow($size:2px) {
+    -webkit-filter: drop-shadow($size $size 2px rgba(0, 0, 0, $shadow-opacity));
+    filter        : drop-shadow($size $size 2px rgba(0, 0, 0, $shadow-opacity));
+}
+
+@mixin big-shadow($jarak:5px) {
+    -webkit-filter: drop-shadow($jarak*0.027 $jarak*0.03 0 rgba(0, 0, 0, $shadow-opacity));
+    filter        : drop-shadow($jarak*0.027 $jarak*0.03 0 rgba(0, 0, 0, $shadow-opacity));
+}
+
+@mixin box ($size, $rotation) {
+
+    height          : $size;
+    width           : $size;
+    overflow        : hidden;
+    position        : relative;
+    background-color: lightskyblue;
+    border-radius   : $size/10;
+    box-shadow      : $size/10 $size/10 0 rgba(0, 0, 0, $shadow-opacity);
+    transform       : rotate($rotation);
+}
+
+@mixin p-box {
+    @extend .is-vcentered;
+    padding: 50px 0;
+
+    // max-width: 50vw;
+    &__thumbnail {
+        .thumbnail {
+            @include box(300px, -5deg);
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        display        : flex;
+        justify-content: center;
+    }
+
+    &__title {
+        font-family  : 'Cooper';
+        font-size    : 4rem;
+        line-height  : 0.8;
+        margin-bottom: 1.5rem;
+    }
+}

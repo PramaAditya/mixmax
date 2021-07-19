@@ -1,0 +1,142 @@
+.intro1 {
+    margin            : 0;
+    padding           : 0;
+    position          : fixed !important;
+    // overflow: scroll;
+    z-index           : 200;
+    display           : flex;
+    flex-direction    : column;
+    height            : 100vh;
+    width             : 100vw;
+    background        : #F12837;
+    top               : 0;
+    bottom            : 0;
+    // justify-content: center;'
+    align-items       : center;
+    
+    .logos {
+        margin-top  : 2em;
+        display     : flex;
+        justify-self: flex-start;
+
+        img {
+            height: 150px;
+        }
+    }
+
+    .legal {
+        margin         : 5em 0;
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        align-items    : center;
+        justify-self   : center;
+
+        .scroller {
+            min-height : 200px;
+            font-size  : 150px;
+            color      : white;
+            font-family: 'Helvetica';
+            text-transform: uppercase;
+        }
+
+        p {
+            font-family: 'Helvetica';
+            color      : black;
+        }
+    }
+
+    .buttons {
+        justify-self : flex-end;
+        display      : flex;
+        align-items  : center;
+        justify-items: center;
+
+        .b-button {
+            font-size  : 70px;
+            font-family: 'Helvetica Neue Condensed';
+            padding    : 5px 0;
+            min-width: 200px;
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+
+            &.is-white {
+                background-color: white;
+                color           : black;
+            }
+
+            &.is-black {
+                background-color: black;
+                color           : white;
+            }
+        }
+    }
+    transition: all .5s ease-in-out;
+    &.hidden{
+        transform: translateY(-150vh);
+    }
+
+    @media screen and (max-width: $tablet) {
+        justify-content: space-around;
+        .logos{
+            img{
+                height: auto;
+                max-width: 120px;
+            }
+        }
+        .legal{
+            margin: 0;
+        }
+        .buttons{
+            align-items: center;
+            justify-content: center;
+            .b-button{
+                font-size: 50px;
+            }
+        }
+    }
+}
+
+.intro2{
+    margin            : 0;
+    padding           : 0;
+    position          : fixed !important;
+    // overflow: scroll;
+    z-index           : 150;
+    display           : flex;
+    height            : 100vh;
+    width             : 100vw;
+    background        : black;
+    top               : 0;
+    bottom            : 0;
+    justify-content: center;
+    align-items       : center;
+    @media screen and (max-width: $tablet) {
+        flex-direction: column;
+        .butt{
+            width: 100vw !important;
+        }
+    }
+    .butt{
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-position: center center;
+        .logo{
+            height: 150px;
+        }
+    }
+    .mixmax{
+        background-image: url('../images/mixmax-bg.jpg');
+    }
+    .blackjack{
+        background-image: url('../images/blackjack-bg.jpg');
+    }
+    transition: all .5s ease-in-out;
+    &.hidden{
+        transform: translateY(-150vh);
+    }
+}

@@ -1,0 +1,197 @@
+.section {
+    .title {
+        font-size: 5.5rem;
+
+        @media screen and (max-width:$tablet) {
+            font-size: 1.75rem;
+        }
+    }
+
+    transition: background-color .5s ease-in-out;
+}
+
+.section {
+    &.full-width {
+        padding-left : 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.spotify-cover {
+    height          : 150px;
+    width           : 150px;
+    overflow        : hidden;
+    position        : relative;
+    background-color: lightskyblue;
+    border-radius   : 15px;
+    box-shadow      : 15px 15px 0 rgba(0, 0, 0, $shadow-opacity);
+    margin-bottom   : 1em;
+
+    &.is-small {
+        height       : 100px;
+        width        : 100px;
+        border-radius: 10px;
+        box-shadow   : 10px 10px 0 rgba(0, 0, 0, $shadow-opacity);
+    }
+}
+
+
+.divide {
+    padding-top   : 0;
+    padding-bottom: 0;
+    position      : relative;
+
+    &.top {
+        &::before {
+            content         : " ";
+            display         : block;
+            height          : $divider-h;
+            top             : -$divider-h + 2; //fix gap
+            position        : absolute;
+            width           : 100vw;
+            z-index         : 50;
+            background-color: inherit;
+            left            : 0;
+        }
+
+        &.is-1::before {
+            -webkit-mask: url('../images/divider/top/1.svg') no-repeat bottom;
+            mask        : url('../images/divider/top/1.svg') no-repeat bottom;
+        }
+
+        &.is-2::before {
+            -webkit-mask: url('../images/divider/top/2.svg') no-repeat bottom;
+            mask        : url('../images/divider/top/2.svg') no-repeat bottom;
+        }
+
+        &.is-3::before {
+            -webkit-mask: url('../images/divider/top/3.svg') no-repeat bottom;
+            mask        : url('../images/divider/top/3.svg') no-repeat bottom;
+        }
+
+        &.is-4::before {
+            -webkit-mask: url('../images/divider/top/4.svg') no-repeat bottom;
+            mask        : url('../images/divider/top/4.svg') no-repeat bottom;
+        }
+
+        &.is-5::before {
+            -webkit-mask: url('../images/divider/top/5.svg') no-repeat bottom;
+            mask        : url('../images/divider/top/5.svg') no-repeat bottom;
+        }
+
+        &.is-6::before {
+            -webkit-mask: url('../images/divider/top/6.svg') no-repeat bottom;
+            mask        : url('../images/divider/top/6.svg') no-repeat bottom;
+        }
+    }
+
+    &.bottom {
+        &::after {
+            content            : " ";
+            display            : block;
+            height             : $divider-h;
+            width              : 100vw;
+            z-index            : 50;
+            position           : absolute;
+            // background-image: url('../images/divider/top_1');
+            background-color   : inherit;
+            bottom             : -$divider-h +15;
+            left               : 0;
+        }
+
+        &.is-1::after {
+            -webkit-mask: url('../images/divider/bottom/1.svg') no-repeat top;
+            mask        : url('../images/divider/bottom/1.svg') no-repeat top;
+        }
+
+        &.is-2::after {
+            -webkit-mask: url('../images/divider/bottom/2.svg') no-repeat top;
+            mask        : url('../images/divider/bottom/2.svg') no-repeat top;
+        }
+
+        &.is-3::after {
+            -webkit-mask: url('../images/divider/bottom/3.svg') no-repeat top;
+            mask        : url('../images/divider/bottom/3.svg') no-repeat top;
+        }
+
+        &.is-4::after {
+            -webkit-mask: url('../images/divider/bottom/4.svg') no-repeat top;
+            mask        : url('../images/divider/bottom/4.svg') no-repeat top;
+        }
+
+        &.is-5::after {
+            -webkit-mask: url('../images/divider/bottom/5.svg') no-repeat top;
+            mask        : url('../images/divider/bottom/5.svg') no-repeat top;
+        }
+
+        &.is-6::after {
+            -webkit-mask: url('../images/divider/bottom/6.svg') no-repeat top;
+            mask        : url('../images/divider/bottom/6.svg') no-repeat top;
+        }
+
+    }
+
+
+}
+
+.divider {
+    width        : auto;
+    height       : $divider-h;
+    background   : transparent;
+    margin-bottom: -10px;
+    margin-top   : -$divider-h;
+}
+
+.section {
+    &.kuning {
+        background-color: $kuning;
+    }
+
+    &.merah {
+        background-color: $merah;
+    }
+
+    &.hijau {
+        background-color: $hijau;
+    }
+}
+
+
+.page-header {
+    $x         : 200px;
+    margin-top : -$x;
+    padding-top: $x;
+}
+
+#floating-experience {
+    position: fixed;
+    z-index : 140;
+    left    : 20px;
+    height  : 75px;
+    width   : 75px;
+    bottom  : 20px;
+    filter  : drop-shadow(1px 1px 2px rgba(white, .1));
+
+    img {
+        height: 100%;
+    }
+
+    animation-name           : rotate;
+    animation-duration       : 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    &:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

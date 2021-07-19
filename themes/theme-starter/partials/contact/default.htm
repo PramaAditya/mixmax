@@ -1,0 +1,50 @@
+<form data-request="{{ __SELF__ }}::onFormSubmit">
+
+    {{ form_token() }}
+
+    <div id="{{ __SELF__ }}_forms_flash"></div>
+    <div class="columns is-multiline">
+        <div class="field column is-half">
+            <div class="control">
+                <input class="input" type="text" name="first_name" placeholder="First Name">
+            </div>
+        </div>
+        <div class="field column is-half">
+            <div class="control">
+                <input class="input" type="text" name="last_name" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="field column is-full">
+            <div class="control">
+                <input class="input" type="email" name="email" placeholder="Email">
+            </div>
+        </div>
+        <div class="field column is-full">
+            <div class="control">
+                <div class="select">
+                    <select class="is-full" name="category">
+                        <option disabled selected>How can we help?</option>
+                        <option value="questions">Throw your questions here</option>
+                        <option value="locations">Feeling thirsty? We got you covered.</option>
+                        <option value="complaints">Product Complaint</option>
+                        <option value="resellers">Reseller Welcome</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="field column is-full">
+            <div class="control">
+              <textarea name="question" class="textarea" placeholder="Question Text"></textarea>
+            </div>
+        </div>
+        <div class="field column is-full">
+            <div class="control">
+                {% partial '@recaptcha' %}
+            </div>
+        </div>
+
+    </div>
+
+    <button id="simpleContactSubmitButton" type="submit" class="button is-medium">Send</button>
+
+</form>

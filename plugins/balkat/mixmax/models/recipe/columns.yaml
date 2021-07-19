@@ -1,0 +1,23 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+    name:
+        label: name
+        type: text
+    details:
+        label: details
+        type: text
+        searchable: true
+    image:
+        label: image
+        type: text
+        searchable: true
+    video:
+        label: video
+        type: text
+        searchable: true
+    sort_order:
+        label: sort_order
+        type: number

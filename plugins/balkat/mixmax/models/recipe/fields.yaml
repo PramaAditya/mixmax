@@ -1,0 +1,20 @@
+fields:
+    name:
+        label: 'Recipe Name'
+        span: auto
+        type: text
+    details:
+        label: 'Recipe Details'
+        size: giant
+        span: full
+        type: richeditor
+    video:
+        label: Video
+        mode: file
+        span: auto
+        type: mediafinder
+    image:
+        label: Thumbnail
+        mode: image
+        span: auto
+        type: mediafinder

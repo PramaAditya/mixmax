@@ -1,0 +1,223 @@
+// Title dipadatinx
+// Botol cuma 5deg miringnyax
+// Rock <br> a Guavax
+// komposisi botol dan kanannyax
+
+
+// Floater masih ada yang padatx
+
+// Title news sound of corner digedein dan warna putihx
+
+// Footer Shop MixMax naik. Footer tingginya 100vh
+// Logo OT dikecilinxx
+// Menu Socmed lebih kecil jaraknya2xx
+
+// Font Menu dikecilin 10% lagixx
+
+// Halaman Flavors
+// lebih tinggi lagi botol yang activexx
+// Album Name font dibesarinxx
+// Itutuh bukan screenshot tapi widget spotify! xx
+// Big bottle goyang kiri kananxx
+
+// Opacity shadow diturunin ~20% lagixx
+
+// Cursor pake botol mixmax
+
+/* Tinyslider gallery tilt bieren */
+.bieren-tilt-gallery {
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+}
+.bieren-tilt-gallery li {
+    display: inline-block;
+    position: relative;
+}
+@media (hover: hover) {
+    .js .bieren-tilt-gallery .slide-wrap {
+        -webkit-transition: margin 150ms;
+        transition: margin 150ms;
+    }
+    .js .bieren-tilt-gallery li:not(.active-slide):hover .slide-wrap {
+        cursor: pointer;
+        margin-top: -2px;
+    }
+}
+
+.bieren-tilt-gallery .bottle-wrap {
+    width: 5rem;
+    position: relative;
+    z-index: 2;
+}
+@media (min-width: 1200px) {
+    .bieren-tilt-gallery .bottle-wrap {
+        width: 6.5rem;
+    }
+}
+.bieren-tilt-gallery li.prev-slide .bottle-wrap, .bieren-tilt-gallery li.next-slide .bottle-wrap {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.bieren-tilt-gallery li.active-slide .bottle-wrap {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+}
+.bottle-tilt-shadow-wrap {
+    bottom: -1.5rem;
+    left: -1rem;
+}
+@media (max-width: 640px) {
+    .bieren-tilt-gallery .bottle-tilt-lijn-wrap {
+        margin-left: -1px;
+    }
+}
+
+.no-js .bieren-tilt-gallery li .bier-item {
+    display: block;
+    padding-left: 2rem;
+    width: 12rem;
+}
+.bieren-tilt-gallery .bier-item h2 {
+    white-space: nowrap;
+}
+.js .bieren-tilt-gallery .bier-item {
+    opacity: 0;
+    text-align: left;
+    position: relative;
+    left: 4rem;
+}
+.js .bieren-tilt-gallery li:not(.active-slide) .bier-item {
+    width: 0 !important;
+}
+.js .bieren-tilt-gallery li.active-slide .bier-item {
+    opacity: 1;
+    display: block;
+}
+.js .bieren-tilt-gallery li.active-slide .bier-item .anim-me {
+    opacity: 0;
+    position: relative;
+    left: 4.5rem;
+}
+
+/* tns responsive positioning */
+@media (max-width: 768px) {
+    .js .bieren-tilt-gallery li:not(.active-slide) .bier-item,
+    .js .bieren-tilt-gallery li.active-slide .bier-item {
+        width: auto !important;
+    }
+    .js .bieren-tilt-gallery li .bier-item h2 {
+        width: 14rem;
+    }
+	/*.js .bieren-tilt-gallery li.active-slide .bottle-wrap {
+		padding-left: 3rem;
+	}*/
+    .js .bieren-tilt-gallery li.active-slide .bier-item {
+        box-sizing: content-box;
+        padding-right: 5rem;
+    }
+
+    .js .bieren-tilt-gallery li:first-child {
+        margin-left: 0 !important;
+    }
+    .js .bieren-tilt-gallery li:last-child {
+        margin-left: 0 !important;
+    }
+}
+@media (min-width: 768px) {
+    .js .bieren-tilt-gallery li.active-slide {
+        margin-left: 0;
+    }
+    .js .bieren-tilt-gallery li:first-child {
+        margin-left: -9rem;
+    }
+    .js .bieren-tilt-gallery li.active-slide .bier-item {
+        box-sizing: content-box;
+        padding-right: 5rem;
+    }
+}
+@media (min-width: 1200px) {
+    .js .bieren-tilt-gallery li.active-slide .bier-item .anim-me {
+        left: 6.25rem;
+    }
+}
+
+.bieren-tilt-gallery-wrap .tns-nav {
+    z-index: 3;
+    margin: 0;
+    top: -1rem;
+}
+.bieren-tilt-gallery-wrap .tns-nav button {
+    margin: 0;
+    background: #393955;
+    height: 1.5rem; width: 1.5rem;
+    box-shadow: inset 0 0 0 .5rem #1E1E31;
+}
+.bieren-tilt-gallery-wrap .tns-nav button.tns-nav-active {
+    background: #F9AD42;
+}
+
+
+.firework-particle div {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    position: absolute;
+    border-radius: 100%;
+}
+
+/* tns responsive positioning */
+@media (max-width: 768px) {
+    .js .bieren-tilt-gallery li:not(.active-slide) .bier-item,
+    .js .bieren-tilt-gallery li.active-slide .bier-item {
+        width: auto !important;
+    }
+    .js .bieren-tilt-gallery li .bier-item h2 {
+        width: 14rem;
+    }
+	/*.js .bieren-tilt-gallery li.active-slide .bottle-wrap {
+		padding-left: 3rem;
+	}*/
+    .js .bieren-tilt-gallery li.active-slide .bier-item {
+        box-sizing: content-box;
+        padding-right: 5rem;
+    }
+
+    .js .bieren-tilt-gallery li:first-child {
+        margin-left: 0 !important;
+    }
+    .js .bieren-tilt-gallery li:last-child {
+        margin-left: 0 !important;
+    }
+}
+@media (min-width: 768px) {
+    .js .bieren-tilt-gallery li.active-slide {
+        margin-left: 0;
+    }
+    .js .bieren-tilt-gallery li:first-child {
+        margin-left: -9rem;
+    }
+    .js .bieren-tilt-gallery li.active-slide .bier-item {
+        box-sizing: content-box;
+        padding-right: 5rem;
+    }
+}
+@media (min-width: 1200px) {
+    .js .bieren-tilt-gallery li.active-slide .bier-item .anim-me {
+        left: 6.25rem;
+    }
+}
+
+.bieren-tilt-gallery-wrap .tns-nav {
+    z-index: 3;
+    margin: 0;
+    top: -1rem;
+}
+.bieren-tilt-gallery-wrap .tns-nav button {
+    margin: 0;
+    background: #393955;
+    height: 1.5rem; width: 1.5rem;
+    box-shadow: inset 0 0 0 .5rem #1E1E31;
+}
+.bieren-tilt-gallery-wrap .tns-nav button.tns-nav-active {
+    background: #F9AD42;
+}

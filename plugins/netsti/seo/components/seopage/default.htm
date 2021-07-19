@@ -1,0 +1,44 @@
+{% if __SELF__.settings.responsive %}
+{% if __SELF__.settings.size == 'custom' %}
+<meta name="viewport" content="width={{__SELF__.settings.width}}, height={{__SELF__.settings.height}}, initial-scale={{__SELF__.settings.rev_scale}}">
+{% else %}
+<meta name="viewport" content="{{__SELF__.settings.size}}, initial-scale={{__SELF__.settings.rev_scale}}">
+{% endif %}
+{% endif %}
+
+{% placeholder meta default %}
+{% if __SELF__.redirect_url %}<meta http-equiv="refresh" content="0; url={{__SELF__.redirect_url}}" />{% endif %}
+{% if __SELF__.seo_title %}<title>{{__SELF__.seo_title | generateTitle}}</title>{% endif %}
+{% if __SELF__.seo_description %}<meta name="description" content="{{__SELF__.seo_description}}">{% endif %}
+{% if __SELF__.seo_keywords %}<meta name="keywords" content="{{__SELF__.seo_keywords}}">{% endif %}
+{% if __SELF__.canonical_url %}<link rel="canonical" href="{{__SELF__.canonical_url}}" />{% else %}{{ '' | generateCanonicalUrl}}{% endif %}
+<meta name="robots" content="{{__SELF__.robot_index}},{{__SELF__.robot_follow}}">
+
+{% if __SELF__.settings.enable_og_tags %}
+{% if __SELF__.ogTitle %}<meta property="og:title" content="{{ __SELF__.ogTitle }}" />{% endif %}
+{% if __SELF__.ogUrl %}<meta property="og:url" content="{{ __SELF__.ogUrl }}" />{% endif %}
+{% if __SELF__.ogSiteName %}<meta property="og:site_name" content="{{ __SELF__.ogSiteName }}" />{% endif %}
+{% if __SELF__.ogDescription %}<meta property="og:description" content="{{ __SELF__.ogDescription }}" />{% endif %}
+{% if __SELF__.ogImage %}<meta property="og:image" itemprop="image" content="{{ __SELF__.ogImage|media|app }}" />{% endif %}
+{% if __SELF__.ogFbAppId %}<meta property="fb:app_id" content="{{ __SELF__.ogFbAppId  }}" />{% endif %}
+{% endif %}
+
+{% endplaceholder %}
+
+{% if __SELF__.settings.favicon %}
+<link rel="icon" type="image/png" href="{{__SELF__.settings.favicon.getThumb(32,32,'crop')|app}}" />
+<link rel="shortcut icon" type="image/x-icon"href="{{__SELF__.settings.favicon.getThumb(32,32,'crop')|app}}"/>
+{% endif %}
+
+{% if __SELF__.settings.appicon %}
+<link href="{{__SELF__.settings.appicon.getThumb(200,200,'crop')|app}}" rel="apple-touch-icon" />
+<link href="{{__SELF__.settings.appicon.getThumb(76,76,'crop')|app}}" rel="apple-touch-icon" sizes="76x76" />
+<link href="{{__SELF__.settings.appicon.getThumb(120,120,'crop')|app}}" rel="apple-touch-icon" sizes="120x120" />
+<link href="{{__SELF__.settings.appicon.getThumb(152,152,'crop')|app}}" rel="apple-touch-icon" sizes="152x152" />
+<link href="{{__SELF__.settings.appicon.getThumb(180,180,'crop')|app}}" rel="apple-touch-icon" sizes="180x180" />
+<link href="{{__SELF__.settings.appicon.getThumb(192,192,'crop')|app}}" rel="icon" sizes="192x192" />
+<link href="{{__SELF__.settings.appicon.getThumb(128,128,'crop')|app}}" rel="icon" sizes="128x128" />
+{% endif %}
+
+{{ ''|otherMetaTags|raw }}
+

@@ -1,0 +1,101 @@
+tabs:
+    fields:
+        name:
+            label: 'Flavor Name'
+            span: auto
+            type: text
+            tab: 'General Info'
+        image:
+            label: 'Flavor Bottle Image'
+            mode: file
+            span: auto
+            type: mediafinder
+            tab: 'General Info'
+        slug:
+            label: Slug
+            span: auto
+            required: 1
+            type: text
+            tab: 'General Info'
+        description:
+            label: 'Flavor Description'
+            size: huge
+            span: full
+            type: richeditor
+            tab: 'General Info'
+        color_1:
+            label: 'Flavor Main Color'
+            span: auto
+            type: colorpicker
+            tab: 'General Info'
+        flavor_images:
+            label: 'Flavor Images'
+            prompt: 'Add new item'
+            style: default
+            span: auto
+            type: repeater
+            tab: 'General Info'
+            form:
+                fields:
+                    image:
+                        label: Image
+                        mode: image
+                        span: full
+                        type: mediafinder
+        color_2:
+            label: 'Flavor Color 2'
+            span: left
+            type: colorpicker
+            tab: 'General Info'
+        color_3:
+            label: 'Flavor Color 3'
+            span: left
+            type: colorpicker
+            tab: 'General Info'
+        spotify_title:
+            label: 'Album Title'
+            span: auto
+            type: text
+            tab: Spotify
+        spotify_id:
+            label: 'Album ID'
+            span: auto
+            type: text
+            tab: Spotify
+        spotify_description:
+            label: 'Album Description'
+            size: large
+            span: full
+            type: richeditor
+            tab: Spotify
+        spotify_cover:
+            label: 'Album Cover'
+            mode: file
+            span: auto
+            type: mediafinder
+            tab: Spotify
+        spotify_sc:
+            label: 'Album Screenshot'
+            span: auto
+            mode: file
+            type: mediafinder
+            tab: Spotify
+        ig_filter_url:
+            label: 'Instagram Filter URL'
+            span: left
+            type: text
+            tab: Instagram
+        ig_photos:
+            label: 'Floating Photos'
+            prompt: 'Add new item'
+            style: default
+            span: right
+            type: repeater
+            tab: Instagram
+            form:
+                fields:
+                    photo:
+                        label: Photo
+                        mode: image
+                        span: full
+                        type: mediafinder

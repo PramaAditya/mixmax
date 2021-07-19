@@ -1,0 +1,4 @@
+title: Recipes
+modelClass: Balkat\Mixmax\Models\Recipe
+toolbar:
+    buttons: reorder_toolbar

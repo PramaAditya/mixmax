@@ -1,0 +1,31 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: name
+        type: text
+    outlet_ket:
+        label: outlet_ket
+        type: text
+    province:
+        label: province
+        type: text
+    city:
+        label: city
+        type: text
+    address:
+        label: address
+        type: text
+    zip:
+        label: zip
+        type: number
+    category:
+        label: category
+        type: text
+    lat:
+        label: latitude
+        type: text
+    lng:
+        label: longitude
+        type: text

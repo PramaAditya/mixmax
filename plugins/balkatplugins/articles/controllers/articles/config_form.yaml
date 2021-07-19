@@ -1,0 +1,10 @@
+name: Articles
+form: $/balkatplugins/articles/models/article/fields.yaml
+modelClass: BalkatPlugins\Articles\Models\Article
+defaultRedirect: balkatplugins/articles/articles
+create:
+    redirect: 'balkatplugins/articles/articles/update/:id'
+    redirectClose: balkatplugins/articles/articles
+update:
+    redirect: balkatplugins/articles/articles
+    redirectClose: balkatplugins/articles/articles

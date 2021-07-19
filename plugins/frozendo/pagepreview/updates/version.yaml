@@ -1,0 +1,12 @@
+1.0.1: First version of Page Preview.
+1.1.0: Page Preview now support Rainlab Static Pages plugin.
+1.1.1: Preview options added to customize the preview.
+1.1.2: Save button added to the preview popup to quick save after preview.
+1.1.3: Locale Picker component property 'forceUrl' set to false during preview to prevent redirection.
+1.1.4: Responsiveness check widths changed so the range between each size is bigger.
+1.1.5: Page preview can be accessed via GET request if the page is cached.
+1.1.6: Hungarian locale added thanks to Szabó Gergő.
+1.1.7: Fixes bug where popup is not showing if topbar is collapsed.
+1.1.8: Replace array constants with variables because of compatibility issues with earlier versions of PHP.
+1.2.0: Fixes bug where many preview buttons are displayed if repeater is used.
+1.2.1: Add the ability to replace the default preview button.
